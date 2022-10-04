@@ -32,30 +32,30 @@ app.add_middleware(
 )
 
 
-class RegData(BaseModel):
-    user_name: str
-    password: str
-    role: str
+# class RegData(BaseModel):
+#     user_name: str
+#     password: str
+#     role: str
 
 
-class LoginData(BaseModel):
-    user_name: str
-    password: str
+# class LoginData(BaseModel):
+#     user_name: str
+#     password: str
 
 
-def encryption(user_pass):
-    return hashlib.sha512(user_pass.encode()).hexdigest()
+# def encryption(user_pass):
+#     return hashlib.sha512(user_pass.encode()).hexdigest()
 
 
-def find_data(p_username):
-    query = {
-        'user_name': p_username
-    }
-    return client['pos_cp']['login_data'].find_one(query)
+# def find_data(p_username):
+#     query = {
+#         'user_name': p_username
+#     }
+#     return client['pos_cp']['login_data'].find_one(query)
 
 
-def ingest_regist(p_data):
-    client['pos_cp']['login_data'].insert_one(p_data)
+# def ingest_regist(p_data):
+#     client['pos_cp']['login_data'].insert_one(p_data)
 
 
 @app.get("/")
