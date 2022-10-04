@@ -65,4 +65,27 @@ def home():
 
 @app.get("/test")
 def home():
-    return {"message": 'This is encrypted again: ' + encryption('whats_after_like')}
+    return {"message": 'This is encrypted lagi: ' + encryption('whats_after_like')}
+
+
+@app.post('/CRUD/reg')
+def fcreate_item(item: RegData):
+    if find_data(item.user_name):
+        return {'registration_status': 'failed', 'msg': 'user_name already registered'}
+    else:
+        conv = {'user_name': item.user_name, 'password': encryption(
+            item.password), 'role': item.role}
+        ingest_regist(conv)
+        return {'registration_status': 'success'}
+
+
+@app.post('/CRUD/login')
+def flogin_item(item: LoginData):
+    doc_item = find_data(item.user_name)
+    if doc_item:
+        if doc_item['password'] == encryption(item.password):
+            return {'login_status': 'success'}
+        else:
+            return {'login_status': 'failed', 'msg': 'wrong password'}
+    else:
+        return {'login_status': 'failed', 'msg': 'wrong user_name'}
