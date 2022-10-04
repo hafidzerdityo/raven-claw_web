@@ -65,4 +65,4 @@ def home():
 
 @app.get("/test")
 def home():
-    return {"message": 'This is encrypted: ' + encryption('whats_after_like')}
+    return {"message": 'This is encrypted again: ' + encryption('whats_after_like')}
