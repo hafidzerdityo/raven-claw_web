@@ -9,16 +9,16 @@ from dotenv import load_dotenv
 import os
 
 
-load_dotenv()
+# load_dotenv()
 
-mongo_key = os.getenv("MONGO_PASS")
-# connection_string = "mongodb://localhost:27017"  # local
+# mongo_key = os.getenv("MONGO_PASS")
+# # connection_string = "mongodb://localhost:27017"  # local
 
-# mongo db cloud
-connection_string = f'mongodb+srv://hafidz_erdityo:{mongo_key}@cluster0.uorwk7c.mongodb.net/?retryWrites=true&w=majority'
-client = pymongo.MongoClient(connection_string)
+# # mongo db cloud
+# connection_string = f'mongodb+srv://hafidz_erdityo:{mongo_key}@cluster0.uorwk7c.mongodb.net/?retryWrites=true&w=majority'
+# client = pymongo.MongoClient(connection_string)
 
-print(client)
+# print(client)
 
 app = FastAPI()
 origins = ["*"]
