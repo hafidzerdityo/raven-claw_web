@@ -5,8 +5,8 @@ from pydantic import BaseModel
 import pymongo
 import hashlib
 import uvicorn
-# from dotenv import load_dotenv
-# import os
+from dotenv import load_dotenv
+import os
 
 
 # load_dotenv()
@@ -65,4 +65,4 @@ def home():
 
 @app.get("/test")
 def home():
-    return {"message": encryption('ayam_goreng')}
+    return {"message": 'This is encrypted: ' + encryption('whats_after_like')}
