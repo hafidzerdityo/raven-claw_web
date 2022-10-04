@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Path
 from fastapi.middleware.cors import CORSMiddleware
-# from typing import Optional
-# from pydantic import BaseModel
-# import pymongo
-# import hashlib
-# import uvicorn
+from typing import Optional
+from pydantic import BaseModel
+import pymongo
+import hashlib
+import uvicorn
 # from dotenv import load_dotenv
 # import os
 
@@ -61,3 +61,8 @@ app.add_middleware(
 @app.get("/")
 def home():
     return {"message": "API CP Kelompok 3 Ravenclaw"}
+
+
+@app.get("/test")
+def home():
+    return {"message": "test"}
