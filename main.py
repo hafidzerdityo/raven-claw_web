@@ -32,19 +32,19 @@ app.add_middleware(
 )
 
 
-# class RegData(BaseModel):
-#     user_name: str
-#     password: str
-#     role: str
+class RegData(BaseModel):
+    user_name: str
+    password: str
+    role: str
 
 
-# class LoginData(BaseModel):
-#     user_name: str
-#     password: str
+class LoginData(BaseModel):
+    user_name: str
+    password: str
 
 
-# def encryption(user_pass):
-#     return hashlib.sha512(user_pass.encode()).hexdigest()
+def encryption(user_pass):
+    return hashlib.sha512(user_pass.encode()).hexdigest()
 
 
 # def find_data(p_username):
@@ -65,4 +65,4 @@ def home():
 
 @app.get("/test")
 def home():
-    return {"message": "test"}
+    return {"message": encryption('ayam_goreng')}
