@@ -42,15 +42,25 @@ class LoginController extends Controller
         ]);
 
         $result = \json_decode($response, true);
-        return $result;
         if($result['login_status'] == 'success'){
                 Session::put('login_status', 'login');
                 Session::put('user', $result['data']);
-                // view()->share('users', $result['data']);
-                return redirect()->route('admin_dashboard', $result);
+
+                if($result['data']['role']=='client'){
+                    return redirect()->route('client_dashboard', $result);
+                }else{
+                    return redirect()->route('admin_dashboard', $result);
+
+                }
         }else{
             return redirect()->route('login');
         }
+    }
+
+    public function destroy(){
+        Session::flush();
+
+        return redirect()->route('login');
     }
 
     /**
@@ -87,14 +97,4 @@ class LoginController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

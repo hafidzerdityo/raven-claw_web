@@ -20,20 +20,20 @@ Route::get('/', function () {
 
 Route::get('login', 'LoginController@index')->name('login');
 Route::post('login', 'LoginController@store')->name('post_login');
+Route::get('logout', 'LoginController@destroy')->name('logout');
 
-
+//ADMIN
 Route::get('dashboard', 'AdminDashboardController@index')->name('admin_dashboard');
-Route::get('list_pengajuan', function () {
-    return view('admin/list_pengajuan');
-});
 
-Route::get('riwayat_pengajuan', function () {
-    return view('admin/riwayat_pengajuan');
-});
+//CLIENT
+Route::get('list_pengajuan', 'ClientPengajuanController@index')->name('client_list_pengajuan');
+Route::get('tambah_pengajuan', 'ClientPengajuanController@create')->name('tambah_pengajuan');
+Route::post('tambah_pengajuan', 'ClientPengajuanController@store')->name('post_tambah_pengajuan');
 
-Route::get('list_client', function () {
-    return view('admin/list_client');
-});
+
+Route::get('dashboard', 'ClientDashboardController@index')->name('client_dashboard');
+
+
 
 Route::get('forgotpass', function () {
     return view('forgotpass');
