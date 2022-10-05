@@ -18,9 +18,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('login', function(){
-    return view('login');
-});
+Route::get('login', 'LoginController@index')->name('login');
+Route::post('login', 'LoginController@store')->name('post_login');
+
+
+Route::get('dashboard', 'AdminDashboardController@index')->name('admin_dashboard');
 Route::get('list_pengajuan', function () {
     return view('admin/list_pengajuan');
 });

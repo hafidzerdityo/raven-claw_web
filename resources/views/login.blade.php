@@ -20,10 +20,11 @@
         <p class="text-muted">Silahkan masukkan username dan kata sandi kamu </p>
 
         <!-- Login Form-->
-        <form class="mt-4" action="/">
+        <form class="mt-4" action="{{ route('post_login')}}" method="POST">
+          @csrf
           <div class="form-group">
             <label class="form-label form-label-light" for="login-email">Username</label>
-            <input type="email" class="form-control form-control-light" id="login-email" placeholder="Masukkan username anda">
+            <input type="text" name="username" class="form-control form-control-light" id="login-email" placeholder="Masukkan username anda">
           </div>
           <div class="form-group">
             <label for="login-password" class="form-label form-label-light d-flex justify-content-between align-items-center">
@@ -31,7 +32,7 @@
               <a href="forgotpass" class="text-muted small ms-2 text-decoration-underline">Lupa
                 password?</a>
             </label>
-            <input type="password" class="form-control form-control-light" id="login-password" placeholder="Masukkan password anda">
+            <input type="password" name="password" class="form-control form-control-light" id="login-password" placeholder="Masukkan password anda">
           </div>
           <button type="submit" class="btn btn-primary d-block w-100 my-4">Login</button>
         </form>
