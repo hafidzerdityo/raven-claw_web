@@ -54,6 +54,10 @@ class FormData(BaseModel):
     bsu_fix: float
 
 
+class CheckID(BaseModel):
+    username: str
+
+
 def encryption(user_pass):
     return hashlib.sha512(user_pass.encode()).hexdigest()
 
@@ -63,6 +67,13 @@ def find_data(p_username):
         'username': p_username
     }
     return client['pos_cp']['login_data'].find_one(query, {'_id': False})
+
+
+def find_data_pengajuan(p_username):
+    query = {
+        'username': p_username
+    }
+    return client['pos_cp']['client_pengajuan'].find_one(query, {'_id': False})
 
 
 def ingest_regist(p_data):
@@ -75,7 +86,7 @@ def ingest_pengajuan(p_data):
 
 @app.get("/")
 def home():
-    return {"message": "API CP Kelompok 3 Ravenclaw test 1"}
+    return {"message": "API CP Kelompok 3 Ravenclaw test 6"}
 
 
 @app.get("/test")
@@ -111,14 +122,17 @@ def flogin_item(item: LoginData):
 @app.post('/CRUD/client/form-pengajuan')
 def fcreate_item(item: FormData):
     data = json.loads(item.json())
-    # print(type(data))
-    ingest_pengajuan(data)
-    return {'registration_status': 'success'}
+    if data != find_data_pengajuan(data['username']):
+        print(data)
+        print(find_data_pengajuan(data['username']))
+        ingest_pengajuan(data)
+        return {'status': 'success'}
+    else:
+        return {'status': 'failed', 'msg': 'duplicate'}
 
 
 # @app.post('/CRUD/client/lihat-data-pengajuan')
-# def fcreate_item(item: FormData):
-#     conv = {'username': item.username, 'password': encryption(
-#         item.password), 'role': item.role, 'divisi': item.divisi}
+# def fcreate_item(item: CheckID):
+#     data = json.loads(item.json())
 #     ingest_pengajuan(conv)
 #     return {'registration_status': 'success'}
