@@ -35,6 +35,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
+        return $request;
         $response = Http::post('https://ravenclaw-services.herokuapp.com/CRUD/login', [
             'username' => $request->username,
             'password' => $request->password,
