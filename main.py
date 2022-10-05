@@ -1,3 +1,4 @@
+from ctypes.wintypes import LARGE_INTEGER
 from fastapi import FastAPI, Path
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
@@ -8,6 +9,7 @@ import uvicorn
 from dotenv import load_dotenv
 import os
 import json
+import time
 
 
 load_dotenv()
@@ -91,9 +93,16 @@ def ingest_pengajuan(p_data):
     client['pos_cp']['client_pengajuan'].insert_one(p_data)
 
 
+list_divisi = {
+    'DEVOPS': 'DEV',
+    'ITAIS': 'ITA',
+    'AO': 'AO'
+}
+
+
 @app.get("/")
 def home():
-    return {"message": "API CP Kelompok 3 Ravenclaw test 1"}
+    return {"message": "API CP Kelompok 3 Ravenclaw test 10"}
 
 
 @app.get("/test")
@@ -128,11 +137,17 @@ def flogin_item(item: LoginData):
 
 @app.post('/CRUD/client/form-pengajuan')
 def fcreate_item(item: FormData):
+
     data = json.loads(item.json())
     if data != find_data_pengajuan(data['username']):
-        print(data)
-        print(find_data_pengajuan(data['username']))
-        ingest_pengajuan(data)
+        t = str(time.time())
+        idku = f"{list_divisi[data['divisi']]}-{data['due_date'].replace('-','')}-{t.split('.')[0]}"
+
+        datas = list(data.items())
+        datas.insert(0, ('order_id', idku))
+        datas.insert(7, ('status', 'PENDING'))
+        out = dict(datas)
+        ingest_pengajuan(out)
         return {'status': 'success'}
     else:
         return {'status': 'failed', 'msg': 'duplicate'}
