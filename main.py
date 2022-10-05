@@ -76,6 +76,13 @@ def find_data_pengajuan(p_username):
     return client['pos_cp']['client_pengajuan'].find_one(query, {'_id': False})
 
 
+def find_data_pengajuan_all(p_username):
+    query = {
+        'username': p_username
+    }
+    return client['pos_cp']['client_pengajuan'].find(query, {'_id': False, 'username': 0})
+
+
 def ingest_regist(p_data):
     client['pos_cp']['login_data'].insert_one(p_data)
 
@@ -86,7 +93,7 @@ def ingest_pengajuan(p_data):
 
 @app.get("/")
 def home():
-    return {"message": "API CP Kelompok 3 Ravenclaw test 6"}
+    return {"message": "API CP Kelompok 3 Ravenclaw test 1"}
 
 
 @app.get("/test")
@@ -131,8 +138,8 @@ def fcreate_item(item: FormData):
         return {'status': 'failed', 'msg': 'duplicate'}
 
 
-# @app.post('/CRUD/client/lihat-data-pengajuan')
-# def fcreate_item(item: CheckID):
-#     data = json.loads(item.json())
-#     ingest_pengajuan(conv)
-#     return {'registration_status': 'success'}
+@app.post('/CRUD/client/lihat-data-pengajuan')
+def fcreate_item(item: CheckID):
+    data = json.loads(item.json())
+    list_view = list(find_data_pengajuan_all(data['username']))
+    return list_view
