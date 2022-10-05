@@ -151,7 +151,7 @@ def fcreate_item(item: FormData):
         ingest_pengajuan(out)
         return {'status': 'success'}
     else:
-        return {'status': 'failed', 'msg': 'duplicate'}
+        return {'status': 'failed', 'msg': 'duplicate', 'data1': data, 'data2': check_data}
 
 
 @app.post('/CRUD/client/lihat-data-pengajuan')
