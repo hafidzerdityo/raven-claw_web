@@ -33,13 +33,14 @@ app.add_middleware(
 
 
 class RegData(BaseModel):
-    user_name: str
+    username: str
     password: str
     role: str
+    divisi: str
 
 
 class LoginData(BaseModel):
-    user_name: str
+    username: str
     password: str
 
 
@@ -49,9 +50,9 @@ def encryption(user_pass):
 
 def find_data(p_username):
     query = {
-        'user_name': p_username
+        'username': p_username
     }
-    return client['pos_cp']['login_data'].find_one(query, {'_id': False, 'password': 0})
+    return client['pos_cp']['login_data'].find_one(query, {'_id': False})
 
 
 def ingest_regist(p_data):
@@ -70,22 +71,24 @@ def home():
 
 @app.post('/CRUD/reg')
 def fcreate_item(item: RegData):
-    if find_data(item.user_name):
-        return {'registration_status': 'failed', 'msg': 'user_name already registered'}
+    if find_data(item.username):
+        return {'registration_status': 'failed', 'msg': 'username already registered'}
     else:
-        conv = {'user_name': item.user_name, 'password': encryption(
-            item.password), 'role': item.role}
+        conv = {'username': item.username, 'password': encryption(
+            item.password), 'role': item.role, 'divisi': item.divisi}
         ingest_regist(conv)
         return {'registration_status': 'success'}
 
 
 @app.post('/CRUD/login')
 def flogin_item(item: LoginData):
-    doc_item = find_data(item.user_name)
+    doc_item = find_data(item.username)
+    print(doc_item)
     if doc_item:
         if doc_item['password'] == encryption(item.password):
+            del doc_item['password']
             return {'login_status': 'success', 'data': doc_item}
         else:
             return {'login_status': 'failed', 'msg': 'wrong password'}
     else:
-        return {'login_status': 'failed', 'msg': 'wrong user_name'}
+        return {'login_status': 'failed', 'msg': 'wrong username'}
