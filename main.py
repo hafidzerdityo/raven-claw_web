@@ -53,6 +53,7 @@ class FormData(BaseModel):
     divisi: str
     aktivitas: str
     due_date: str
+    kategori: str
     bsu_fix: float
 
 
