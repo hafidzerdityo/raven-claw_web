@@ -38,3 +38,7 @@ Route::get('list_client', function () {
 Route::get('forgotpass', function () {
     return view('forgotpass');
 });
+
+Route::get('form', function () {
+    return view('form');
+});
