@@ -69,6 +69,9 @@
                             <a class="d-flex align-items-center menu-link" href="{{ url('/')}}"><i class="ri-home-4-line me-3"></i> <span>Dashboard</span></a>
                         </li>
                         <li class="menu-item">
+                            <a class="d-flex align-items-center menu-link" href="{{ url('form')}}"><i class="ri-home-4-line me-3"></i> <span>Form Pengajuan</span></a>
+                        </li>
+                        <li class="menu-item">
                             <a class="d-flex align-items-center menu-link" href="{{ url('list_pengajuan')}}"><i class="ri-home-4-line me-3"></i> <span>List Pengajuan</span></a>
                         </li>
                         <li class="menu-item">
