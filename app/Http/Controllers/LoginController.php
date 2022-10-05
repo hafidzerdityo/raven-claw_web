@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Session;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class LoginController extends Controller
 {
@@ -42,16 +44,17 @@ class LoginController extends Controller
         ]);
 
         $result = \json_decode($response, true);
+
         if($result['login_status'] == 'success'){
-                Session::put('login_status', 'login');
-                Session::put('user', $result['data']);
+            Session::put('login', 'true');
+            Session::put('user', $result['data']);
 
-                if($result['data']['role']=='client'){
-                    return redirect()->route('client_dashboard', $result);
-                }else{
-                    return redirect()->route('admin_dashboard', $result);
-
-                }
+            Alert::success('Login', 'Hello '.$result['data']['name']);
+            if($result['data']['role']=='client'){
+                return redirect()->route('client_dashboard', $result);
+            }else{
+                return redirect()->route('admin_dashboard', $result);
+            }
         }else{
             return redirect()->route('login');
         }

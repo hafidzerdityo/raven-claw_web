@@ -51,6 +51,7 @@
 <body class="">
 
     @include('template.navbar')
+    @include('sweetalert::alert')
     @yield('main-content')
     @include('template.aside')
     

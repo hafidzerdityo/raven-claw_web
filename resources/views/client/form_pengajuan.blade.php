@@ -13,30 +13,43 @@
             <li class="breadcrumb-item"><a href="./index.html"><i class="ri-home-line align-bottom me-1"></i> Tambah Pengajuan</a></li>
               <li class="breadcrumb-item active" aria-current="page">Tables</li>
           </ol>
-      </nav>      <!-- / Breadcrumbs-->
+      </nav>      
+      <!-- / Breadcrumbs-->
 
       <div class="row g-4">
-        <div class="col-9">
+        <div class="col-9" >
             <div class="card mb-4">
                 <div class="card-header justify-content-between align-items-center d-flex">
-                    <h6 class="card-title m-0">Default form</h6>
+                    <h6 class="card-title m-0">form Pengajuan Program Kerja</h6>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="{{ route('post_tambah_pengajuan')}}" method="POST">
+                        @csrf
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Enter your email">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                            </div>
+                            <label for="name" class="form-label">Pemilik Program Kerja</label>
+                            <input type="text" name="username" value="{{ Session::has('user')? (Session::get('user')['username']):"" }}" hidden>
+                            <input type="text" class="form-control" name="name" placeholder="" value="{{ Session::has('user')? (Session::get('user')['username']):"" }}" readonly disabled>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <label for="name" class="form-label">Divisi</label>
+                            <input type="text" class="form-control" name="divisi"  placeholder="" value="{{ Session::has('user')? (Session::get('user')['divisi']):"" }}" readonly disabled>
                         </div>
-                        <div class="mb-3 form-check">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Aktivitas</label>
+                            <textarea  class="form-control" name="aktivitas" id="" placeholder="judul program kerja"></textarea>
+                        </div> <div class="mb-3">
+                            <label for="" class="form-label">Due Date</label>
+                            <input type="date" class="form-control" name="due_date" id="" placeholder="" value="">
+                        </div> <div class="mb-3">
+                            <label for="" class="form-label">BSU Fix</label>
+                            <input type="number" class="form-control" name="bsu_fix" id="" placeholder="" value="">
+                        {{-- </div> <div class="mb-3">
+                            <label for="" class="form-label">Lampiran/Dokumen</label>
+                            <input type="file" class="form-control" name="lampiran" id="" placeholder="" value="">
+                        </div> --}}
+                        <div class="mb-3 mt-2 form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <label class="form-check-label" for="exampleCheck1">Saya sudah memeriksa pengajuan dengan teliti</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -44,36 +57,7 @@
             </div>
         </div>
       </div>
-      
-      <!-- Sidebar Menu Overlay-->
-      <div class="menu-overlay-bg"></div>
-      <!-- / Sidebar Menu Overlay-->
-      
-      <!-- Modal Imports-->
-      <!-- Place your modal imports here-->
-      
-      <!-- Default Example Modal Import-->
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Here goes modal body content
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      <!-- Offcanvas Imports-->
-      <!-- Place your offcanvas imports here-->
-      
+
       <!-- Default Example Offcanvas Import-->
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
@@ -164,7 +148,8 @@
           <!-- / View all btn-->
       
         </div>
-      </div>      <!-- / Footer-->
+      </div>      
+      <!-- / Footer-->
 
     </section>
     <!-- / Content-->

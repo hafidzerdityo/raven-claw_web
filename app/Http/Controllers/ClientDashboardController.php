@@ -13,7 +13,7 @@ class ClientDashboardController extends Controller
      */
     public function index()
     {
-        return view('client.list_pengajuan');
+        return view('client.dashboard');
     }
 
     /**

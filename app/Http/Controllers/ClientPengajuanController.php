@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Session;
 
 class ClientPengajuanController extends Controller
 {
@@ -13,7 +15,17 @@ class ClientPengajuanController extends Controller
      */
     public function index()
     {
-        return view('client.list_pengajuan');
+        if (Session::has('login') && Session::has('user')) {
+            $username = Session::get('user')['username'];
+            $response = Http::post('https://ravenclaw-services.herokuapp.com/CRUD/client/lihat-data-pengajuan', [
+                'username' => $username,
+            ]);
+
+            $result = \json_decode($response, true);
+            return view('client.list_pengajuan', compact('result'));
+        }else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -44,12 +56,13 @@ class ClientPengajuanController extends Controller
         ]);
 
         $result = \json_decode($response, true);
+        return $result;
         
-        if($result['status']=='success'){
-            return redirect()->route('client_list_pengajuan');
-        }else{
-            return redirect()->back();
-        }
+        // if($result['status']=='success'){
+        //     return redirect()->route('client_list_pengajuan');
+        // }else{
+        //     return redirect()->back();
+        // }
     }
 
     /**

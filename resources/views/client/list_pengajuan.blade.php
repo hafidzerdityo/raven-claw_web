@@ -16,8 +16,8 @@
       </nav>      <!-- / Breadcrumbs-->
 
       <!-- Page Title-->
-      <h2 class="fs-4 mb-2">Daftar Pengajuan</h2>
-      <p class=" mb-4">Examples for opt-in styling of tables.</p>
+      <h2 class="fs-4 mb-2">List Pengajuan</h2>
+      <p class=" mb-4">Pengajuan Divisi {{ Session::get('user')['divisi']}}</p>
       <!-- / Page Title-->
 
       <div class="row g-4">
@@ -28,40 +28,54 @@
               <h6 class="card-title">Default example</h6>
             </div>
             <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
+                @if (empty($result))
+                    <p>Belum ada Pengajuan. Tambah pengajuan baru di menu pengajuan</p>               
+                @else
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">No Pengajuan</th>
+                            <th scope="col">Aktivitas</th>
+                            <th scope="col">Due Date</th>
+                            <th scope="col">BSU Fix</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($result as $data)
+                            <tr>
+                                <th scope="row">{{ $data['order_id']}}</th>
+                                <td>{{ $data['name']}}</td>
+                                <td>{{ $data['aktivitas']}}</td>
+                                <td>Rp {{ number_format($data['bsu_fix'])}}</td>
+                                <td>
+                                    @if ($data['status']=='pending' OR $data['status']=='request')
+                                        <span class="badge bg-secondary">{{ $data['status']}}</span>  
+                                    @elseif($data['status']=='on_process')
+                                        <span class="badge bg-warning">{{ $data['status']}}</span>                                
+                                    @elseif($data['status']=='completed')                    
+                                        <span class="badge bg-success">{{ $data['status']}}</span>      
+                                    @else
+                                        <span class="badge bg-danger">{{ $data['status']}}</span>                                
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        <button class=" btn-sm btn btn-warning mx-2">Detail</button>
+                                        <button class="btn-sm btn btn-primary">Edit</button>
+                                    </div>
+                                </td>
+                              </tr>
+                            @endforeach
+                        </tbody>
+                      </table>
+                @endif
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Sidebar Menu Overlay-->
       <div class="menu-overlay-bg"></div>
       <!-- / Sidebar Menu Overlay-->
