@@ -51,7 +51,7 @@ def find_data(p_username):
     query = {
         'user_name': p_username
     }
-    return client['pos_cp']['login_data'].find(query, {'_id': False})
+    return client['pos_cp']['login_data'].find_one(query, {'_id': False})
 
 
 def ingest_regist(p_data):
