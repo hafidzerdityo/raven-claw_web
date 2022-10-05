@@ -115,7 +115,8 @@ def fcreate_item(item: RegData):
     if find_data(item.username):
         return {'registration_status': 'failed', 'msg': 'username already registered'}
     else:
-        conv = json.loads(item.json())
+        conv = {'name': item.name, 'username': item.username, 'password': encryption(
+            item.password), 'role': item.role, 'divisi': item.divisi}
         ingest_regist(conv)
         return {'registration_status': 'success'}
 
