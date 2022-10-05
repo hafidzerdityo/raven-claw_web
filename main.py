@@ -161,4 +161,4 @@ def fcreate_item(item: CheckID):
 
 @app.get('/CRUD/admin/lihat-data-pengajuan')
 def fcreate_item():
-    return list(client['pos_cp']['client_pengajuan'].find({}))
+    return list(client['pos_cp']['client_pengajuan'].find({}, {'_id': 0}))
