@@ -84,7 +84,7 @@ def flogin_item(item: LoginData):
     doc_item = find_data(item.user_name)
     if doc_item:
         if doc_item['password'] == encryption(item.password):
-            return {'login_status': 'success'}
+            return {'login_status': 'success', 'data': doc_item}
         else:
             return {'login_status': 'failed', 'msg': 'wrong password'}
     else:
