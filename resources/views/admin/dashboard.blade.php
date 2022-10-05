@@ -10,7 +10,7 @@
             <!-- Breadcrumbs-->
             <nav class="mb-4 pb-2 border-bottom" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/"><i class="ri-home-line align-bottom me-1"></i> Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/"><i class="ri-home-line align-bottom me-1"></i> </a></li>
                 </ol>
             </nav>            <!-- / Breadcrumbs-->
 
@@ -1004,7 +1004,7 @@
                     </div>
                     </div>
                 </div>
-                </div>
+            </div>
             <!-- Offcanvas Imports-->
             <!-- Place your offcanvas imports here-->
             

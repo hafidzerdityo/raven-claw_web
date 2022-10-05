@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Session;
 
 class LoginController extends Controller
 {
@@ -35,15 +36,18 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
         $response = Http::post('https://ravenclaw-services.herokuapp.com/CRUD/login', [
             'username' => $request->username,
             'password' => $request->password,
         ]);
 
         $result = \json_decode($response, true);
+        return $result;
         if($result['login_status'] == 'success'){
-            return redirect()->route('admin_dashboard', $result);
+                Session::put('login_status', 'login');
+                Session::put('user', $result['data']);
+                // view()->share('users', $result['data']);
+                return redirect()->route('admin_dashboard', $result);
         }else{
             return redirect()->route('login');
         }

@@ -24,7 +24,7 @@
           @csrf
           <div class="form-group">
             <label class="form-label form-label-light" for="login-email">Username</label>
-            <input type="date" name="username" class="form-control form-control-light" id="login-email" placeholder="Masukkan username anda">
+            <input type="text" name="username" class="form-control form-control-light" id="login-email" placeholder="Masukkan username anda">
           </div>
           <div class="form-group">
             <label for="login-password" class="form-label form-label-light d-flex justify-content-between align-items-center">
