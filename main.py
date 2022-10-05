@@ -1,4 +1,3 @@
-from ctypes.wintypes import LARGE_INTEGER
 from fastapi import FastAPI, Path
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
@@ -158,3 +157,8 @@ def fcreate_item(item: CheckID):
     data = json.loads(item.json())
     list_view = list(find_data_pengajuan_all(data['username']))
     return list_view
+
+
+@app.get('/CRUD/admin/lihat-data-pengajuan')
+def fcreate_item():
+    return list(client['pos_cp']['client_pengajuan'].find({}))
