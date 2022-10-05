@@ -149,9 +149,9 @@ def fcreate_item(item: FormData):
         datas.insert(7, ('status', 'PENDING'))
         out = dict(datas)
         ingest_pengajuan(out)
-        return {'status': 'success'}
+        return {'status': 'success', 'data1': data, 'data2': check_data}
     else:
-        return {'status': 'failed', 'msg': 'duplicate', 'data1': data, 'data2': check_data}
+        return {'status': 'failed', 'msg': 'duplicate'}
 
 
 @app.post('/CRUD/client/lihat-data-pengajuan')
