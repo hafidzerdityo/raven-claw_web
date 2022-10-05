@@ -7,6 +7,7 @@ import hashlib
 import uvicorn
 from dotenv import load_dotenv
 import os
+import json
 
 
 load_dotenv()
@@ -44,6 +45,15 @@ class LoginData(BaseModel):
     password: str
 
 
+class FormData(BaseModel):
+    username: str
+    pemilik_proyek: str
+    divisi: str
+    aktivitas: str
+    due_date: str
+    bsu_fix: float
+
+
 def encryption(user_pass):
     return hashlib.sha512(user_pass.encode()).hexdigest()
 
@@ -57,6 +67,10 @@ def find_data(p_username):
 
 def ingest_regist(p_data):
     client['pos_cp']['login_data'].insert_one(p_data)
+
+
+def ingest_pengajuan(p_data):
+    client['pos_cp']['client_pengajuan'].insert_one(p_data)
 
 
 @app.get("/")
@@ -92,3 +106,19 @@ def flogin_item(item: LoginData):
             return {'login_status': 'failed', 'msg': 'wrong password'}
     else:
         return {'login_status': 'failed', 'msg': 'wrong username'}
+
+
+@app.post('/CRUD/client/form-pengajuan')
+def fcreate_item(item: FormData):
+    data = json.loads(item.json())
+    # print(type(data))
+    ingest_pengajuan(data)
+    return {'registration_status': 'success'}
+
+
+# @app.post('/CRUD/client/lihat-data-pengajuan')
+# def fcreate_item(item: FormData):
+#     conv = {'username': item.username, 'password': encryption(
+#         item.password), 'role': item.role, 'divisi': item.divisi}
+#     ingest_pengajuan(conv)
+#     return {'registration_status': 'success'}
