@@ -102,7 +102,7 @@ list_divisi = {
 
 @app.get("/")
 def home():
-    return {"message": "API CP Kelompok 3 Ravenclaw test 11"}
+    return {"message": "API CP Kelompok 3 Ravenclaw test 10"}
 
 
 @app.get("/test")
@@ -138,10 +138,16 @@ def flogin_item(item: LoginData):
 @app.post('/CRUD/client/form-pengajuan')
 def fcreate_item(item: FormData):
     data = json.loads(item.json())
-    check_data = find_data_pengajuan(data['username'])
-    check_data.pop('order_id')
-    check_data.pop('status')
-    if data != check_data:
+    check_data = list(
+        client['pos_cp']['client_pengajuan'].find({}, {'_id': False}))
+    status = True
+    for i in check_data:
+        i.pop('order_id')
+        i.pop('status')
+        if data == i:
+            status = False
+            break
+    if status:
         t = str(time.time())
         idku = f"{list_divisi[data['divisi']]}-{t.split('.')[0]}"
         datas = list(data.items())
@@ -149,7 +155,7 @@ def fcreate_item(item: FormData):
         datas.insert(7, ('status', 'PENDING'))
         out = dict(datas)
         ingest_pengajuan(out)
-        return {'status': 'success', 'data1': data, 'data2': check_data}
+        return {'status': 'success'}
     else:
         return {'status': 'failed', 'msg': 'duplicate'}
 
