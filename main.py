@@ -35,6 +35,7 @@ app.add_middleware(
 
 
 class RegData(BaseModel):
+    name: str
     username: str
     password: str
     role: str
