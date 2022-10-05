@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin/dashboard');
-});
+Route::get('/', 'LoginController@index')->name('login');
 
 
 Route::get('login', 'LoginController@index')->name('login');
@@ -37,8 +35,4 @@ Route::get('dashboard', 'ClientDashboardController@index')->name('client_dashboa
 
 Route::get('forgotpass', function () {
     return view('forgotpass');
-});
-
-Route::get('form', function () {
-    return view('form');
 });

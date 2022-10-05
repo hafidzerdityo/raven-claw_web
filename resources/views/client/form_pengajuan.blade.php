@@ -27,20 +27,26 @@
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Pemilik Program Kerja</label>
-                            <input type="text" name="username" value="{{ Session::has('user')? (Session::get('user')['username']):"" }}" hidden>
-                            <input type="text" class="form-control" name="name" placeholder="" value="{{ Session::has('user')? (Session::get('user')['username']):"" }}" readonly disabled>
+                            <input type="hidden" name="username" value="{{ Session::has('user')? (Session::get('user')['username']):"" }}" >
+                            <input type="text" class="form-control" name="name" placeholder="" value="{{ Session::has('user')? (Session::get('user')['name']):"" }}" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Divisi</label>
-                            <input type="text" class="form-control" name="divisi"  placeholder="" value="{{ Session::has('user')? (Session::get('user')['divisi']):"" }}" readonly disabled>
+                            <input type="text" class="form-control" name="divisi"  placeholder="" value="{{ Session::has('user')? (Session::get('user')['divisi']):"" }}" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Aktivitas</label>
                             <textarea  class="form-control" name="aktivitas" id="" placeholder="judul program kerja"></textarea>
-                        </div> <div class="mb-3">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="" class="form-label">Kategori</label>
+                            <input type="text" class="form-control" name="kategori" id="" placeholder="" value="">
+                        </div>
+                        <div class="mb-3">
                             <label for="" class="form-label">Due Date</label>
                             <input type="date" class="form-control" name="due_date" id="" placeholder="" value="">
-                        </div> <div class="mb-3">
+                        </div> 
+                        <div class="mb-3">
                             <label for="" class="form-label">BSU Fix</label>
                             <input type="number" class="form-control" name="bsu_fix" id="" placeholder="" value="">
                         {{-- </div> <div class="mb-3">

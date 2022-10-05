@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Session;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class ClientPengajuanController extends Controller
 {
@@ -46,23 +48,26 @@ class ClientPengajuanController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $response = Http::post('https://ravenclaw-services.herokuapp.com/CRUD/client/form-pengajuan', [
             'username' => $request->username,
-            'name' => $request->name,
+            'name' => $request->name, 
             'divisi' => $request->divisi,
             'aktivitas' => $request->aktivitas,
             'due_date' => $request->due_date,
-            'bsu_fix' => $request->bsu_fix
+            'kategori' => $request->kategori,
+            'bsu_fix' => floatval($request->bsu_fix)
         ]);
 
-        $result = \json_decode($response, true);
-        return $result;
         
-        // if($result['status']=='success'){
-        //     return redirect()->route('client_list_pengajuan');
-        // }else{
-        //     return redirect()->back();
-        // }
+        $result = \json_decode($response, true);
+        if($result['status']=='success'){
+            Alert::success('Berhasil','Pengajuan berhasil ditambahkan');
+            return redirect()->route('client_list_pengajuan');
+        }else{
+            Alert::error('Gagal', $result['msg']);
+            return redirect()->back();
+        }
     }
 
     /**

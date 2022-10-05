@@ -37,6 +37,7 @@
                             <th scope="col">No Pengajuan</th>
                             <th scope="col">Aktivitas</th>
                             <th scope="col">Due Date</th>
+                            <th scope="col">Kategori</th>
                             <th scope="col">BSU Fix</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
@@ -46,8 +47,9 @@
                             @foreach ($result as $data)
                             <tr>
                                 <th scope="row">{{ $data['order_id']}}</th>
-                                <td>{{ $data['name']}}</td>
                                 <td>{{ $data['aktivitas']}}</td>
+                                <td>{{ $data['due_date']}}</td>
+                                <td>{{ $data['kategori']}}</td>
                                 <td>Rp {{ number_format($data['bsu_fix'])}}</td>
                                 <td>
                                     @if ($data['status']=='pending' OR $data['status']=='request')

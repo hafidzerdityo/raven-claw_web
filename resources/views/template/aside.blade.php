@@ -22,7 +22,7 @@
                         <small>{{ Session::get('user')['divisi']}}</small>
                         <div class="d-flex flex-wrap mt-2 justify-content-between align-items-center">
                             <div class="py-2 f-h-9 px-3 d-flex justify-content-center align-items-center bg-dark-opacity rounded p-2 small fw-bolder me-1">
-                                <i class="ri-map-pin-line me-2"></i> Sarijadi, Kota Bandung
+                                <i class="ri-map-pin-line me-2"></i> {{ Session::get('user')['role']}}
                             </div>
     
                             <!-- User profile dropdown-->
@@ -54,7 +54,7 @@
                         <ul class="list-unstyled mb-6 aside-menu">
                             <li class="menu-section">Menu ADMIN</li>
                             <li class="menu-item">
-                                <a class="d-flex align-items-center menu-link" href="{{ url('/')}}"><i class="ri-home-4-line me-3"></i> <span>Dashboard</span></a>
+                                <a class="d-flex align-items-center menu-link" href="{{ url('')}}"><i class="ri-home-4-line me-3"></i> <span>Dashboard</span></a>
                             </li>
                             <li class="menu-item">
                                 <a class="d-flex align-items-center menu-link" href="{{ route('admin_list_pengajuan')}}"><i class="ri-home-4-line me-3"></i> <span>List Pengajuan</span></a>
@@ -72,9 +72,9 @@
                     @else 
                     <ul class="list-unstyled mb-6 aside-menu">
                         <li class="menu-section">Menu CLIENT</li>
-                        <li class="menu-item">
+                        {{-- <li class="menu-item">
                             <a class="d-flex align-items-center menu-link" href="{{ url('/')}}"><i class="ri-home-4-line me-3"></i> <span>Dashboard</span></a>
-                        </li>
+                        </li> --}}
                         <li class="menu-item">
                             <a class="d-flex align-items-center menu-link" href="{{ route('tambah_pengajuan')}}"><i class="ri-home-4-line me-3"></i> <span>Tambah Pengajuan</span></a>
                         </li>
