@@ -137,7 +137,6 @@ def flogin_item(item: LoginData):
 
 @app.post('/CRUD/client/form-pengajuan')
 def fcreate_item(item: FormData):
-
     data = json.loads(item.json())
     check_data = find_data_pengajuan(data['username'])
     check_data.pop('order_id')
