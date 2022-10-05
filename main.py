@@ -139,7 +139,10 @@ def flogin_item(item: LoginData):
 def fcreate_item(item: FormData):
 
     data = json.loads(item.json())
-    if data != find_data_pengajuan(data['username']):
+    check_data = find_data_pengajuan(data['username'])
+    check_data.pop('order_id')
+    check_data.pop('status')
+    if data != check_data:
         t = str(time.time())
         idku = f"{list_divisi[data['divisi']]}-{t.split('.')[0]}"
         datas = list(data.items())
