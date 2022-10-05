@@ -141,8 +141,7 @@ def fcreate_item(item: FormData):
     data = json.loads(item.json())
     if data != find_data_pengajuan(data['username']):
         t = str(time.time())
-        idku = f"{list_divisi[data['divisi']]}-{data['due_date'].replace('-','')}-{t.split('.')[0]}"
-
+        idku = f"{list_divisi[data['divisi']]}-{t.split('.')[0]}"
         datas = list(data.items())
         datas.insert(0, ('order_id', idku))
         datas.insert(7, ('status', 'PENDING'))
