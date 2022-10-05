@@ -51,7 +51,7 @@ def find_data(p_username):
     query = {
         'user_name': p_username
     }
-    return client['pos_cp']['login_data'].find_one(query)
+    return client['pos_cp']['login_data'].find(query)
 
 
 def ingest_regist(p_data):
@@ -60,7 +60,7 @@ def ingest_regist(p_data):
 
 @app.get("/")
 def home():
-    return {"message": "API CP Kelompok 3 Ravenclaw"}
+    return {"message": "API CP Kelompok 3 Ravenclaw test 1"}
 
 
 @app.get("/test")
