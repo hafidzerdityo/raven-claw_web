@@ -102,7 +102,7 @@ list_divisi = {
 
 @app.get("/")
 def home():
-    return {"message": "API CP Kelompok 3 Ravenclaw test 10"}
+    return {"message": "API CP Kelompok 3 Ravenclaw test 11"}
 
 
 @app.get("/test")
