@@ -47,7 +47,7 @@ class LoginData(BaseModel):
 
 class FormData(BaseModel):
     username: str
-    pemilik_proyek: str
+    name: str
     divisi: str
     aktivitas: str
     due_date: str
