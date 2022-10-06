@@ -51,7 +51,7 @@ class LoginController extends Controller
 
             Alert::success('Login', 'Hello '.$result['data']['name']);
             if($result['data']['role']=='client'){
-                return redirect()->route('client_dashboard', $result);
+                return redirect()->route('client_list_pengajuan', $result);
             }else{
                 return redirect()->route('admin_dashboard', $result);
             }
