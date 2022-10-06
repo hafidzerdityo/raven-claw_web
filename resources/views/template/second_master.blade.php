@@ -45,7 +45,7 @@
     </noscript>
 
     <!-- Page Title -->
-    <title>Kavlan | Bootstrap 5 HTML Admin Dashboard</title>
+    <title>Aplikasi Pengajuan Program Kerja</title>
     
 </head>
 <body class="">
