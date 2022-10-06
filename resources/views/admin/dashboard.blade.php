@@ -5,7 +5,7 @@
     <main id="main">
 
         <!-- Content-->
-        <section class="container-fluid">
+        <section class="container-fluid zzi">
 
             <!-- Breadcrumbs-->
             <nav class="mb-4 pb-2 border-bottom" aria-label="breadcrumb">

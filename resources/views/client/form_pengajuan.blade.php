@@ -20,7 +20,7 @@
         <div class="col-9" >
             <div class="card mb-4">
                 <div class="card-header justify-content-between align-items-center d-flex">
-                    <h6 class="card-title m-0">form Pengajuan Program Kerja</h6>
+                    <h6 class="card-title m-0">Form Pengajuan Program Kerja</h6>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('post_tambah_pengajuan')}}" method="POST">
@@ -57,7 +57,7 @@
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Saya sudah memeriksa pengajuan dengan teliti</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn button4 btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

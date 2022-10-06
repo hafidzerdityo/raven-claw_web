@@ -1,5 +1,5 @@
     <!-- Page Aside-->
-    <aside class="aside bg-dark-700">
+    <aside class="aside zz">
         <div class="simplebar-wrapper">
             <div data-pixr-simplebar>
                 <div class="pb-6 pb-sm-0 position-relative">
@@ -19,10 +19,10 @@
                             <span class="dot bg-success avatar-dot"></span>
                         </div>
                         <p class="mb-0 mt-3 text-white">{{ Session::get('user')['username'] }}</p>
-                        <small>{{ Session::get('user')['divisi']}}</small>
+                        <small class="mmm">{{ Session::get('user')['divisi']}}</small>
                         <div class="d-flex flex-wrap mt-2 justify-content-between align-items-center">
-                            <div class="py-2 f-h-9 px-3 d-flex justify-content-center align-items-center bg-dark-opacity rounded p-2 small fw-bolder me-1">
-                                <i class="ri-map-pin-line me-2"></i> {{ Session::get('user')['role']}}
+                            <div class="mmm py-2 f-h-9 px-3 d-flex justify-content-center align-items-center bg-dark-opacity rounded p-2 small fw-bolder me-1">
+                                <i class="ri-map-pin-line me-2 "></i> {{ Session::get('user')['role']}}
                             </div>
     
                             <!-- User profile dropdown-->
@@ -41,7 +41,7 @@
                                   <li>
                                     <hr class="dropdown-divider">
                                   </li>
-                                  <li><a class="dropdown-item text-danger d-flex align-items-center" href="{{ route('logout')}}"><i
+                                  <li><a class="dropdown-item d-flex align-items-center" href="{{ route('logout')}}"><i
                                         class="ri-lock-line me-2"></i>Logout</a></li>
                                 </ul>
                               </div>

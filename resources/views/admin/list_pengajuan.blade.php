@@ -2,7 +2,7 @@
 
 @section('main-content')
       <!-- Page Content -->
-  <main id="main">
+  <main id="main zzi">
 
     <!-- Content-->
     <section class="container-fluid">
