@@ -15,7 +15,8 @@
             <!-- Logo-->
             
             <div class="shadow-lg rounded p-4 p-sm-5 bg-white form">
-                <h5 class="fw-bold text-muted">Lupa password</h5>
+            
+                <h5 class="fw-bold text-muted">Lupa password </h5>
                 <p class="text-muted">Please enter your email below and we will send you a secure link to reset your
                     password.</p>
 
@@ -25,7 +26,7 @@
                         <label for="forgot-password" class="form-label form-label-light">Email address</label>
                         <input type="email" class="form-control form-control-light" id="forgot-password" placeholder="name@email.com">
                     </div>
-                    <button type="submit" class="btn btn-primary d-block w-100 my-4">Send Reset Link</button>
+                    <button type="submit" class="btn button4 btns d-block w-100 my-4">Send Reset Link</button>
                 </form>
                 <!-- / Form-->
 
