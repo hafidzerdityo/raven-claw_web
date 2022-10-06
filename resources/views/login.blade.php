@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="col-6" style="background: linear-gradient(#FA6D01, #FF5C38);" >
-  <img src="./assets/images/UI1.png" />
+  <img class="centerImg" src="./assets/images/UI1.png" width="500" height="500git"/>
 
 
   <!-- background-image: url(./assets/images/UI1.png); -->
@@ -34,21 +34,20 @@
     <form class="mt-4" action="{{ route('post_login')}}" method="POST">
       @csrf
       <div class="form-group">
-          <label class="form-label form-label-light" for="login-email">Username</label>
-          <input type="text" name="username" class="form-control form-control-light" id="login-email" placeholder="Masukkan username anda">
+        <label class="form-label form-label-light" for="login-email">Username</label>
+        <input type="text" name="username" class="form-control form-control-light" id="login-email" placeholder="Masukkan username anda">
       </div>
       <div class="form-group">
-          <label for="login-password" class="form-label form-label-light d-flex justify-content-between align-items-center">
-            Password
-           
-          </label>
-          <input type="password" name="password" class="form-control form-control-light" id="login-password" placeholder="Masukkan password anda">
-          <label for="login-password" class="form-label form-label-light d-flex justify-content-between align-items-center" style="color:white;">
+        <label for="login-password" class="form-label form-label-light d-flex justify-content-between align-items-center">
+          Password
+        </label>
+        <input type="password" name="password" class="form-control form-control-light" id="login-password" placeholder="Masukkan password anda">
+        <label for="login-password" class="form-label form-label-light d-flex justify-content-between align-items-center" style="color:white;">
           .
-            <a href="forgotpass" class="text-muted small ms-2">Lupa password?</a>
-            <!-- text-decoration-underline -->
-          </label>      
-        </div>
+          <a href="forgotpass" class="text-muted small ms-2 text-decoration-underline">Lupa
+            password?</a>
+        </label>
+      </div>
       <button type="submit" class="btn button4 btns d-block w-100 my-4">Login</button>
     </form>
     <!-- / Login Form -->
