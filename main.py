@@ -51,10 +51,11 @@ class FormData(BaseModel):
     username: str
     name: str
     divisi: str
-    aktivitas: str
-    due_date: str
+    manajer: Optional[str]
     kategori: str
-    bsu_fix: float
+    aktivitas: str
+    due: dict
+    bsu: dict
 
 
 class CheckID(BaseModel):
@@ -97,7 +98,8 @@ def ingest_pengajuan(p_data):
 list_divisi = {
     'DEVOPS': 'DEV',
     'ITAIS': 'ITA',
-    'AO': 'AO'
+    'AO': 'AO',
+    'ITSG': 'ITG'
 }
 
 
