@@ -5,12 +5,12 @@
   <main id="main">
 
     <!-- Content-->
-    <section class="container-fluid">
+    <section class="container-fluid" id="edit_pengajuan">
 
       <!-- Breadcrumbs-->
       <nav class="mb-4 pb-2 border-bottom" aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('tambah_pengajuan')}}"><i class="ri-home-line align-bottom me-1"></i> Tambah Pengajuan</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin_edit_pengajuan','order_id')}}"><i class="ri-home-line align-bottom me-1"></i> Tambah Pengajuan</a></li>
               <li class="breadcrumb-item active" aria-current="page">Tables</li>
           </ol>
       </nav>      
@@ -20,7 +20,7 @@
         <div class="col-12" >
             <div class="card mb-4">
                 <div class="card-header justify-content-between align-items-center d-flex">
-                    <h6 class="card-title m-0">Form Pengajuan Program Kerja</h6>
+                    <h6 class="card-title m-0">Edit Pengajuan Program Kerja</h6>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('post_tambah_pengajuan')}}" method="POST">

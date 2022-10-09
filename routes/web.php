@@ -18,20 +18,19 @@ Route::get('/', 'LoginController@index')->name('login');
 
 Route::get('login', 'LoginController@index')->name('login');
 Route::post('login', 'LoginController@store')->name('post_login');
+
 Route::get('logout', 'LoginController@destroy')->name('logout');
 
-//ADMIN
-Route::get('dashboard', 'AdminDashboardController@index')->name('admin_dashboard');
-
 //CLIENT
-Route::get('list_pengajuan', 'ClientPengajuanController@index')->name('client_list_pengajuan');
-Route::get('tambah_pengajuan', 'ClientPengajuanController@create')->name('tambah_pengajuan');
-Route::post('tambah_pengajuan', 'ClientPengajuanController@store')->name('post_tambah_pengajuan');
-
-
-Route::get('dashboard', 'ClientDashboardController@index')->name('client_dashboard');
-
-
+    Route::get('client_list_pengajuan', 'ClientPengajuanController@index')->name('client_list_pengajuan');
+    Route::get('client_tambah_pengajuan', 'ClientPengajuanController@create')->name('tambah_pengajuan');
+    Route::post('client_tambah_pengajuan', 'ClientPengajuanController@store')->name('post_tambah_pengajuan');    
+    Route::get('dashboard', 'AdminDashboardController@index')->name('admin_dashboard');
+    Route::get('list_pengajuan', 'AdminPengajuanController@index')->name('admin_list_pengajuan');
+    Route::get('detail_pengajuan/{id}', 'AdminPengajuanController@show')->name('admin_detail_pengajuan');
+    Route::get('admin_edit_pengajuan/{id}', 'AdminPengajuanController@edit')->name('admin_edit_pengajuan');
+    Route::get('riwayat_pengajuan', 'AdminPengajuanController@history')->name('admin_riwayat_pengajuan');
+    Route::get('client', 'ClientManagementController@index')->name('admin_list_client');
 
 Route::get('forgotpass', function () {
     return view('forgotpass');

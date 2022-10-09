@@ -1,112 +1,138 @@
 @extends('template.master')
 
 @section('main-content')
-      <!-- Page Content -->
+          <!-- Page Content -->
   <main id="main">
+
     <!-- Content-->
-    <section class="container-fluid" id="list_pengajuan">
+    <section class="container-fluid" id="detail_pengajuan">
 
       <!-- Breadcrumbs-->
       <nav class="mb-4 pb-2 border-bottom" aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./index.html"><i class="ri-home-line align-bottom me-1"></i> List Pengajuan</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin_detail_pengajuan', 'order35353')}}"><i class="ri-home-line align-bottom me-1"></i> Detail Pengajuan</a></li>
               <li class="breadcrumb-item active" aria-current="page">Tables</li>
           </ol>
-      </nav>      <!-- / Breadcrumbs-->
-
-      <!-- Page Title-->
-      <h2 class="fs-4 mb-2">List Pengajuan</h2>
-      <p class=" mb-4">Pengajuan Divisi {{ Session::get('user')['divisi']}}</p>
-      <!-- / Page Title-->
+      </nav>      
+      <!-- / Breadcrumbs-->
 
       <div class="row g-4">
-        <div class="col-12">
-          <!-- Example-->
-          <div class="card mb-4">
-            <div class="card-header">
-              <h6 class="card-title">Default example</h6>
-            </div>
-            <div class="card-body">
-                @if (empty($result))
-                    <p>Belum ada Pengajuan. Tambah pengajuan baru di menu pengajuan</p>               
-                @else
+        <div class="col-12" >
+            <div class="card mb-4">
+                <div class="card-header justify-content-between align-items-center d-flex">
+                    <h6 class="card-title m-0">Detail Program Kerja</h6>
+                </div>
+                <div class="card-body">
                     <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">No Pengajuan</th>
-                            <th scope="col">Aktivitas</th>
-                            <th scope="col">Due Date</th>
-                            <th scope="col">Kategori</th>
-                            <th scope="col">BSU Fix</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
-                          </tr>
-                        </thead>
                         <tbody>
-                            @foreach ($result as $data)
+                            <!-- Order ID -->
                             <tr>
-                                <th scope="row">{{ $data['order_id']}}</th>
-                                <td>{{ $data['aktivitas']}}</td>
-                                <td>{{ $data['due']['due_quarter']}}</td>
-                                <td>{{ $data['kategori']}}</td>
-                                <td>{{ ($data['bsu']['bsu_kategori']=='fix')? ('Rp'.number_format($data['bsu']['bsu_fix'])) : "Fluktuatif"}}</td>
-                                <td>
-                                    @if ($data['status']=='pending' OR $data['status']=='request')
-                                        <span class="badge bg-secondary">{{ $data['status']}}</span>  
-                                    @elseif($data['status']=='on_process')
-                                        <span class="badge bg-warning">{{ $data['status']}}</span>                                
-                                    @elseif($data['status']=='completed')                    
-                                        <span class="badge bg-success">{{ $data['status']}}</span>      
-                                    @else
-                                        <span class="badge bg-danger">{{ $data['status']}}</span>                                
-                                    @endif
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <button class=" btn-sm btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#modalDetailPengajuan">Detail</button>
-                                        @include('client.detail_pengajuan')
-                                        <button class="btn-sm btn btn-primary">Edit</button>
-                                    </div>
-                                </td>
-                              </tr>
-                            @endforeach
+                                <th scope="row">No Pengajuan</th>
+                                <td></td>
+                            </tr>
+
+                            <!-- Divisi -->
+                            <tr>
+                                <th scope="row">Divisi</th>
+                                <td></td>
+                            </tr>
+
+                            <!-- PPK -->
+                            <tr>
+                                <th scope="row">Pemilik Program Kerja (PPK)</th>
+                                <td></td>
+                            </tr>
+
+                            <!-- Manajer-->
+                            <tr>
+                                <th scope="row">Bagian (Manajer)</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- Aktivitas -->
+                            <tr>
+                                <th scope="row">Aktivitas</th>
+                                <td></td>
+                            </tr>
+
+                            <!-- Kategori -->
+                            <tr>
+                                <th scope="row">Kategori</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- Metode pengadaan -->
+                            <tr>
+                                <th scope="row">Metode Pengadaan</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- Mitra -->
+                            <tr>
+                                <th scope="row">Mitra</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- Due Quater-Date -->
+                            <tr>
+                                <th scope="row">Due Quarter-Date</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- BSU -->
+                            <tr>
+                                <th scope="row">BSU</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- File kajian teknis -->
+                            <tr>
+                                <th scope="row">Dokumen Kajian Teknis</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- File TOR -->
+                            <tr>
+                                <th scope="row">Dokumen TOR</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- File EE -->
+                            <tr>
+                                <th scope="row">Dokumen EE</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- No SPK PKS -->
+                            <tr>
+                                <th scope="row">No SPK dan PKS</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- Progress -->
+                            <tr>
+                                <th scope="row">Progress</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- posisi akhir -->
+                            <tr>
+                                <th scope="row">Posisi Akhir</th>
+                                <td></td>
+                            </tr>
+                            
+                            <!-- status -->
+                            <tr>
+                                <th scope="row">Status</th>
+                                <td></td>
+                            </tr>
                         </tbody>
-                      </table>
-                @endif
+                    </table>
+                </div>
             </div>
-          </div>
         </div>
       </div>
 
-      <!-- Sidebar Menu Overlay-->
-      <div class="menu-overlay-bg"></div>
-      <!-- / Sidebar Menu Overlay-->
-      
-      <!-- Modal Imports-->
-      <!-- Place your modal imports here-->
-      
-      <!-- Default Example Modal Import-->
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Here goes modal body content
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      <!-- Offcanvas Imports-->
-      <!-- Place your offcanvas imports here-->
-      
       <!-- Default Example Offcanvas Import-->
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
@@ -197,11 +223,14 @@
           <!-- / View all btn-->
       
         </div>
-      </div>      <!-- / Footer-->
+      </div>      
+      <!-- / Footer-->
 
     </section>
     <!-- / Content-->
 
   </main>
   <!-- /Page Content -->
+
+
 @endsection

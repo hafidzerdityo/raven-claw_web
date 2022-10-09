@@ -15,6 +15,8 @@ class ClientPengajuanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         if (Session::has('login') && Session::has('user')) {
@@ -56,7 +58,11 @@ class ClientPengajuanController extends Controller
             'aktivitas' => $request->aktivitas,
             'due_date' => $request->due_date,
             'kategori' => $request->kategori,
-            'bsu_fix' => floatval($request->bsu_fix)
+            'bsu_fix' => floatval($request->bsu_fix),
+            // 'manajer' => $request->manajer,
+            // 'file_kajian_teknis' => $request->file_kajian_teknis,
+            // 'file_tor' => $request->file_tor,
+            // 'file_ee' => $request->file_ee 
         ]);
 
         

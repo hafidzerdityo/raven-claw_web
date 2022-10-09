@@ -2,121 +2,88 @@
 
 @section('main-content')
       <!-- Page Content -->
-  <main id="main zzi">
-
+  <main id="main">
     <!-- Content-->
     <section class="container-fluid">
 
       <!-- Breadcrumbs-->
       <nav class="mb-4 pb-2 border-bottom" aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./index.html"><i class="ri-home-line align-bottom me-1"></i> Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="./index.html"><i class="ri-home-line align-bottom me-1"></i> List Pengajuan</a></li>
               <li class="breadcrumb-item active" aria-current="page">Tables</li>
           </ol>
       </nav>      <!-- / Breadcrumbs-->
 
       <!-- Page Title-->
-      <h2 class="fs-4 mb-2">Tables</h2>
-      <p class=" mb-4">Examples for opt-in styling of tables.</p>
+      <h2 class="fs-4 mb-2">List Pengajuan</h2>
       <!-- / Page Title-->
 
       <div class="row g-4">
-        <div class="col-12 col-md-6">
-
+        <div class="col-12">
           <!-- Example-->
           <div class="card mb-4">
-            <div class="card-header">
-              <h6 class="card-title">Default example</h6>
-            </div>
             <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
+                @if (empty($result) && count($result)>0)
+                    <p>Belum ada Pengajuan. Tambah pengajuan baru di menu pengajuan</p>               
+                @else
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">No Pengajuan</th>
+                            <th scope="col">DIvisi</th>
+                            <th scope="col">PPK</th>
+                            <th scope="col">Aktivitas</th>
+                            <th scope="col">Metode Pengadaan</th>
+                            <th scope="col">Mitra</th>
+                            <th scope="col">Due Quarter</th>
+                            <th scope="col">Kategori</th>
+                            {{-- <th scope="col">BSU Fix</th> --}}
+                            <th scope="col">Posisi Akhir</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($result['data'] as $data)
+                            <tr>
+                                <th scope="row">{{ $data['order_id']}}</th>
+                                <td>{{ $data['divisi']}}</td>
+                                <td>{{ $data['name']}}</td>
+                                <td>{{ $data['aktivitas']}}</td>
+                                <td>{{ $data['metode_pengadaan']}}</td>
+                                <td>{{ $data['mitra']}}</td>
+                                <td>{{ $data['due']['due_quarter']}}</td>
+                                <td>{{ $data['kategori']}}</td>
+                                {{-- <td>{{ ($data['bsu']['bsu_kategori']=='fix')? ('Rp'.number_format($data['bsu']['bsu_fix'])) : "Fluktuatif"}}</td> --}}
+                                <td>{{ $data['posisi_akhir']}}</td>
+                                <td>
+                                    @if ($data['status']=='pending' OR $data['status']=='request')
+                                        <span class="badge bg-secondary">{{ $data['status']}}</span>  
+                                    @elseif($data['status']=='on_process')
+                                        <span class="badge bg-warning">{{ $data['status']}}</span>                                
+                                    @elseif($data['status']=='completed')                    
+                                        <span class="badge bg-success">{{ $data['status']}}</span>      
+                                    @else
+                                        <span class="badge bg-danger">{{ $data['status']}}</span>                                
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a class="btn btn-sm btn-warning" href="{{ route('admin_detail_pengajuan', 'order35353') }}"><i class="ri-eye-fill m-auto"></i></a>
+                                        <a  class="btn btn-sm btn-primary mx-2" href="{{ route('admin_edit_pengajuan', 'order35353') }}"><i class="ri-edit-fill"></i></a>
+                                        <button class="btn btn-sm btn-danger"><i class="ri-delete-bin-fill"></i></button>
+                                    </div>
+                                </td>
+                              </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
             </div>
           </div>
-          <!-- /Example-->
-
-        </div>
-
-        <div class="col-12 col-md-6">
-
-          <!--  Example-->
-          <div class="card mb-4">
-            <div class="card-header">
-              <h6 class="card-title">Striped row</h6>
-            </div>
-            <div class="card-body">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <!-- / Example-->
-
-
         </div>
       </div>
 
-
-      <!-- Footer -->
-      <!-- <footer class="  footer">
-          <p class="small text-muted m-0">All rights reserved | © 2021</p>
-          <p class="small text-muted m-0">Template created by <a href="https://www.pixelrocket.store/">PixelRocket</a></p>
-      </footer> -->
-      
-      
       <!-- Sidebar Menu Overlay-->
       <div class="menu-overlay-bg"></div>
       <!-- / Sidebar Menu Overlay-->

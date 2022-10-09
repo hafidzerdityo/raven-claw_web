@@ -1,0 +1,55 @@
+{
+    "status":"success",
+    "data":{
+        "order_id":"DEV-09089897",
+        "username":"hanggoro",
+        "name":"Hanggoro Aji",
+        "divisi":"DEVOPS",
+        "manajer":"",
+        "aktivitas":"Pengadaan pelatihan Android Jetpack PRO",
+        "metode_pengadaan":"pemilihan langsung",
+        "mitra":"dicoding",
+        "due":{
+            "due_quarter":"Q3",
+            "due_date":"10-12-2022"
+        },
+        "bsu":{
+            "bsu_kategori":"fix",
+            "bsu_fix":"15000000"
+        },
+        "file_kajian_teknis":"-",
+        "file_tor":"-",
+        "file_ee":"-",
+        "no_spk_pks":"",
+        "posisi_akhir":"Penetapan mitra 08-10-2022",
+        "status":"on_process",
+        "progress":{
+            "pengajuan_pa":{
+                "due_date":"30-08-2022",
+                "completed_date":"25-08-2022",
+                "lampiran":"-"
+            },
+            "pengumuman":{
+                "due_date":"15-09-2022",
+                "completed_date":"10-09-2022",
+                "lampiran":"-"
+            },
+            "evaluasi_teknis":{
+                "due_date":"25-09-2022",
+                "completed_date":"25-09-2022",
+                "lampiran":"-"
+            },
+            "penetapan_mitra":{
+                "due_date":"3-10-2022",
+                "completed_date":"2-10-2022",
+                "lampiran":"-"
+            },
+            "invoicing":{
+                "due_date":"30-11-2022",
+                "completed_date":"",
+                "lampiran":""
+            }
+        }
+
+    }
+}

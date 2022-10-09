@@ -1,5 +1,5 @@
     <!-- Page Aside-->
-    <aside class="aside zz">
+    <aside class="aside zz" id="sidebar">
         <div class="simplebar-wrapper">
             <div data-pixr-simplebar>
                 <div class="pb-6 pb-sm-0 position-relative">
@@ -14,7 +14,7 @@
                     <div class="border-bottom pt-3 pb-5 mb-6 d-flex flex-column align-items-center">
                         <div class="position-relative">
                             <picture class="avatar avatar-profile">
-                                <img class="avatar-profile-img" src="./assets/images/profile-small.jpeg">
+                                <img class="avatar-profile-img" src="{{ asset('/assets/images/profile-small.jpeg')}}">
                             </picture>
                             <span class="dot bg-success avatar-dot"></span>
                         </div>
@@ -54,7 +54,7 @@
                         <ul class="list-unstyled mb-6 aside-menu">
                             <li class="menu-section">Menu ADMIN</li>
                             <li class="menu-item">
-                                <a class="d-flex align-items-center menu-link" href="{{ url('')}}"><i class="ri-home-4-line me-3"></i> <span>Dashboard</span></a>
+                                <a class="d-flex align-items-center menu-link" href="{{ route('admin_dashboard')}}"><i class="ri-home-4-line me-3"></i> <span>Dashboard</span></a>
                             </li>
                             <li class="menu-item">
                                 <a class="d-flex align-items-center menu-link" href="{{ route('admin_list_pengajuan')}}"><i class="ri-home-4-line me-3"></i> <span>List Pengajuan</span></a>

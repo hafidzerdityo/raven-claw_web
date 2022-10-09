@@ -56,12 +56,16 @@
     @yield('main-content')
     @include('template.aside')
     
+    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script> --}}
     <!-- Theme JS -->
     <!-- Vendor JS -->
     <script src="./assets/js/vendor.bundle.js"></script>
     
     <!-- Theme JS -->
     <script src="./assets/js/theme.bundle.js"></script>
+
+    <!-- custom -->
+    <script src="./assets/js/custom.js"></script>
 </body>
 
 </html>

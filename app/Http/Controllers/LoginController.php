@@ -17,7 +17,12 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('login');
+        if(Session::has('login') && Session::get('login')==true){
+            Alert::warning('Logged In', "Anda sudah login");
+            return redirect()->back();
+        }else{
+            return view('login');
+        }
     }
 
     /**
@@ -43,6 +48,7 @@ class LoginController extends Controller
             'password' => $request->password,
         ]);
 
+        // return gettype($response);
         $result = \json_decode($response, true);
 
         if($result['login_status'] == 'success'){
@@ -56,6 +62,7 @@ class LoginController extends Controller
                 return redirect()->route('admin_dashboard', $result);
             }
         }else{
+            Alert::error('Failed', 'Username atau password salah');
             return redirect()->route('login');
         }
     }
