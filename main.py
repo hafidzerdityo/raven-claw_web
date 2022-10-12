@@ -199,14 +199,14 @@ def fcreate_item():
 #######################################
 
 
-def find_data(p_username):
+def find_data_jaskug(p_username):
     query = {
         'username': p_username
     }
     return client['jaskug_data']['login_data'].find_one(query, {'_id': False})
 
 
-def ingest_regist(p_data):
+def ingest_regist_jaskug(p_data):
     client['jaskug_data']['login_data'].insert_one(p_data)
 
 
@@ -217,13 +217,13 @@ def fcreate_item(item: RegData):
     else:
         conv = {'fullName': item.fullName, 'username': item.username, 'password': encryption(
             item.password), 'unit': item.unit, 'role': item.role}
-        ingest_regist(conv)
+        ingest_regist_jaskug(conv)
         return {'registration_status': 'success'}
 
 
 @app.post('/Jaskug/CRUD/login')
 def flogin_item_jaskug(item: LoginDataJaskug):
-    doc_item = find_data(item.username)
+    doc_item = find_data_jaskug(item.username)
     print(doc_item)
     if doc_item:
         if doc_item['password'] == encryption(item.password):
