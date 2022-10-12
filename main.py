@@ -43,6 +43,14 @@ class RegData(BaseModel):
     divisi: str
 
 
+class RegDataJaskug(BaseModel):
+    fullName: str
+    username: str
+    password: str
+    unit: str
+    role: str
+
+
 class LoginData(BaseModel):
     username: str
     password: str
@@ -151,20 +159,6 @@ def flogin_item(item: LoginData):
         return {'login_status': 'failed', 'msg': 'wrong username'}
 
 
-@app.post('/Jaskug/CRUD/login')
-def flogin_item_jaskug(item: LoginDataJaskug):
-    doc_item = find_data(item.username)
-    print(doc_item)
-    if doc_item:
-        if doc_item['password'] == encryption(item.password):
-            del doc_item['password']
-            return {'login_status': 'success', 'data': doc_item}
-        else:
-            return {'login_status': 'failed', 'msg': 'wrong password'}
-    else:
-        return {'login_status': 'failed', 'msg': 'wrong username'}
-
-
 @app.post('/CRUD/client/form-pengajuan')
 def fcreate_item(item: FormData):
     data = json.loads(item.json())
@@ -201,3 +195,41 @@ def fcreate_item(item: CheckID):
 @app.get('/CRUD/admin/lihat-data-pengajuan')
 def fcreate_item():
     return list(client['pos_cp']['client_pengajuan'].find({}, {'_id': 0}))
+
+#######################################
+
+
+def find_data(p_username):
+    query = {
+        'username': p_username
+    }
+    return client['jaskug_data']['login_data'].find_one(query, {'_id': False})
+
+
+def ingest_regist(p_data):
+    client['jaskug_data']['login_data'].insert_one(p_data)
+
+
+@app.post('/Jaskug/CRUD/reg')
+def fcreate_item(item: RegData):
+    if find_data(item.username):
+        return {'registration_status': 'failed', 'msg': 'username already registered'}
+    else:
+        conv = {'fullName': item.fullName, 'username': item.username, 'password': encryption(
+            item.password), 'unit': item.unit, 'role': item.role}
+        ingest_regist(conv)
+        return {'registration_status': 'success'}
+
+
+@app.post('/Jaskug/CRUD/login')
+def flogin_item_jaskug(item: LoginDataJaskug):
+    doc_item = find_data(item.username)
+    print(doc_item)
+    if doc_item:
+        if doc_item['password'] == encryption(item.password):
+            del doc_item['password']
+            return {'login_status': 'success', 'data': doc_item}
+        else:
+            return {'login_status': 'failed', 'msg': 'wrong password'}
+    else:
+        return {'login_status': 'failed', 'msg': 'wrong username'}
