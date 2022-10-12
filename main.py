@@ -49,7 +49,7 @@ class LoginData(BaseModel):
 
 
 class LoginDataJaskug(BaseModel):
-    email: str
+    username: str
     password: str
 
 
