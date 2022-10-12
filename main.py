@@ -211,7 +211,7 @@ def ingest_regist_jaskug(p_data):
 
 
 @app.post('/Jaskug/CRUD/reg')
-def fcreate_item(item: RegData):
+def fcreate_item(item: RegDataJaskug):
     if find_data(item.username):
         return {'registration_status': 'failed', 'msg': 'username already registered'}
     else:
