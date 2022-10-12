@@ -151,20 +151,6 @@ def flogin_item(item: LoginData):
         return {'login_status': 'failed', 'msg': 'wrong username'}
 
 
-@app.post('Jaskug/CRUD/login')
-def flogin_item_jaskug(item: LoginDataJaskug):
-    doc_item = find_data(item.username)
-    print(doc_item)
-    if doc_item:
-        if doc_item['password'] == encryption(item.password):
-            del doc_item['password']
-            return {'login_status': 'success', 'data': doc_item}
-        else:
-            return {'login_status': 'failed', 'msg': 'wrong password'}
-    else:
-        return {'login_status': 'failed', 'msg': 'wrong username'}
-
-
 @app.post('/CRUD/client/form-pengajuan')
 def fcreate_item(item: FormData):
     data = json.loads(item.json())
@@ -201,3 +187,17 @@ def fcreate_item(item: CheckID):
 @app.get('/CRUD/admin/lihat-data-pengajuan')
 def fcreate_item():
     return list(client['pos_cp']['client_pengajuan'].find({}, {'_id': 0}))
+
+
+@app.post('/Jaskug/CRUD/login')
+def flogin_item_jaskug(item: LoginDataJaskug):
+    doc_item = find_data(item.username)
+    print(doc_item)
+    if doc_item:
+        if doc_item['password'] == encryption(item.password):
+            del doc_item['password']
+            return {'login_status': 'success', 'data': doc_item}
+        else:
+            return {'login_status': 'failed', 'msg': 'wrong password'}
+    else:
+        return {'login_status': 'failed', 'msg': 'wrong username'}
