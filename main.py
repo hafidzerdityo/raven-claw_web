@@ -48,6 +48,11 @@ class LoginData(BaseModel):
     password: str
 
 
+class LoginDataJaskug(BaseModel):
+    email: str
+    password: str
+
+
 class FormData(BaseModel):
     username: str
     name: str
@@ -134,6 +139,20 @@ def fcreate_item(item: RegData):
 
 @app.post('/CRUD/login')
 def flogin_item(item: LoginData):
+    doc_item = find_data(item.username)
+    print(doc_item)
+    if doc_item:
+        if doc_item['password'] == encryption(item.password):
+            del doc_item['password']
+            return {'login_status': 'success', 'data': doc_item}
+        else:
+            return {'login_status': 'failed', 'msg': 'wrong password'}
+    else:
+        return {'login_status': 'failed', 'msg': 'wrong username'}
+
+
+@app.post('Jaskug/CRUD/login')
+def flogin_item_jaskug(item: LoginDataJaskug):
     doc_item = find_data(item.username)
     print(doc_item)
     if doc_item:
