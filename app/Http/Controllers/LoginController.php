@@ -17,12 +17,12 @@ class LoginController extends Controller
      */
     public function index()
     {
-        if(Session::has('login') && Session::get('login')==true){
-            Alert::warning('Logged In', "Anda sudah login");
-            return redirect()->back();
-        }else{
+        // if(Session::has('login') && Session::get('login')==true){
+            // Alert::warning('Logged In', "Anda sudah login");
+            // return redirect()->back();
+        // }else{
             return view('login');
-        }
+        // }
     }
 
     /**

@@ -5,7 +5,7 @@
   <main id="main">
 
     <!-- Content-->
-    <section class="container-fluid">
+    <section class="container-fluid" id="form_pengajuan">
 
       <!-- Breadcrumbs-->
       <nav class="mb-4 pb-2 border-bottom" aria-label="breadcrumb">
@@ -48,20 +48,10 @@
                               <input type="text" class="form-control" name="manajer" id="manajer" placeholder="Nama Manajer (opsional)" value="">
                             </div>
 
-                            <!-- Kategori Pengajuan -->
-                            <div class="mb-3">
-                              <label for="" class="form-label">Kategori</label>
-                              <select required class="form-select form-control mb-3" name="kategori" id="kategori" aria-label="example">
-                                <option selected>Pilih kategori biaya</option>
-                                <option class="form-control" value="capex">CAPEX</option>
-                                <option class="form-control" value="opex">OPEX</option>
-                              </select>
-                            </div>
-
                             <!--Aktivitas -->
                             <div class="mb-3">
                               <label for="" class="form-label">Aktivitas</label>
-                              <textarea required class="form-control" name="aktivitas" id="" placeholder="judul program kerja"></textarea>
+                              <textarea required class="form-control" name="aktivitas" id="" placeholder="judul program kerja" height="200px;"></textarea>
                             </div> 
 
                           </div>
@@ -88,6 +78,27 @@
                               </div>
                             </div>
 
+                            <!-- Kategori Pengajuan -->
+                            <div class="mb-3">
+                              <label for="" class="form-label">Kategori</label>
+                              <select required class="form-select form-control mb-3" name="kategori" id="kategori" aria-label="example">
+                                <option selected>Pilih kategori biaya</option>
+                                <option class="form-control" value="capex">CAPEX</option>
+                                <option class="form-control" value="opex">OPEX</option>
+                              </select>
+                            </div>
+
+                            <!-- Mitra -->
+                            <div class="mb-3">
+                              <label for="" class="form-label">Metode Pengadaan</label>
+                              <select required class="form-control form-select" name="metode" id="metode">
+                                <option class="form-control" value="Pelelangan Terbuka">Pelelangan Terbuka</option>
+                                <option class="form-control" value="Pelelangan Terbatas">Pelelangan Terbatas</option>
+                                <option value="form-control" value="Pemilihan Langsung">Pemilihan Langsung</option>
+                                <option value="form-control" value="Pembelian Langsung">Pembelian Langsung</option>
+                                <option value="form-control" value="Peunjukan Langsung">Penunjukan Langsung</option>
+                              </select>
+                            </div>
 
                             <!-- BSU -->
                             <div class="row">
@@ -110,34 +121,55 @@
                             </div>
                             <!-- end BSU -->
 
+                            <!-- Mitra -->
+                            <div class="mb-3">
+                              <label for="" class="form-label">Mitra</label>
+                              <input type="text" class="form-control" name="mitra" id="mitra" placeholder="Mitra (opsional)" value="">
+                            </div>
+                          </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                          <div class="col-12 col-lg-6">
                             <!-- Kajian Teknis -->
                             <div class="mb-3">
-                              <label for="" class="form-label">Dokumen Kajian Teknis</label>
-                              <input type="file" class="form-control" name="file_kajian_teknis" id="file_kajian_teknis" placeholder="upload file kajian teknis .PDF" value="">
+                              <label for="" class="form-label">Kajian Teknis</label>
+                              <input type="file" class="form-control" name="file_kajian_teknis" id="file_kajian_teknis" placeholder="upload file  .PDF" value="">
                             </div>
                             <!-- end kajian teknis -->
 
                             <!-- TOR -->
                             <div class="mb-3">
-                              <label for="" class="form-label">Dokumen TOR</label>
-                              <input type="file" class="form-control" name="file_tor" id="file_tor" placeholder="upload file kajian teknis .PDF" value="">
+                              <label for="" class="form-label">Term Of Reference</label>
+                              <input type="file" class="form-control" name="file_tor" id="file_tor" placeholder="upload file .PDF" value="">
                             </div>
                             <!-- end TOR -->
+                          </div>
 
+                          <div class="col-12 col-lg-6">
                             <!-- EE -->
                             <div class="mb-3">
-                              <label for="" class="form-label">Dokumen Engineering Estimate (EE)</label>
-                              <input type="file" class="form-control" name="file_ee" id="file_ee" placeholder="upload file kajian teknis .PDF" value="">
+                              <label for="" class="form-label">Engineering Estimate</label>
+                              <input type="file" class="form-control" name="file_ee" id="file_ee" placeholder="upload file.PDF" value="">
                             </div>
                             <!-- end EE -->
 
+                            <!-- Pakta Integritas -->
+                            <div class="mb-3">
+                              <label for="" class="form-label">Pakta Integritas</label>
+                              <input type="file" class="form-control" name="file_pakta_integritas" id="file_pakta_integritas" placeholder="upload file .PDF" value="">
+                            </div>
+                            <!-- end Pakta Integritas -->
                           </div>
                         </div>
-                        <div class="mb-3 mt-2 form-check">
+
+                        {{-- <div class="mb-3 mt-2 form-check">
                             <input required type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Saya sudah memeriksa pengajuan dengan teliti</label>
-                        </div>
-                        <button type="submit" class="btn button4 btn-primary">Kirim Pengajuan</button>
+                        </div> --}}
+                        <button type="submit" class="btn button4 btn-primary btn-block">Kirim Pengajuan</button>
                     </form>
                 </div>
             </div>

@@ -1,0 +1,182 @@
+#form_pengajuan hr{
+    margin: 24px 0;
+}
+.btn-block{
+    width: -webkit-fill-available;
+    margin: 16px 0;
+}
+.btn-primary-blue{
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+    border-radius: 12px;
+    width: 100%;
+}
+.menu-link{
+    min-width: 100%;
+
+}
+.bg-white{
+    background-color: #fff;
+}
+
+#dashboard .card{
+    color: black;
+    border-radius: 16px;
+}
+
+#dashboard .card-border{
+    border: 1px #ebe9e9 solid;
+    border-radius: 16px;
+}
+
+.card-blue{
+    background: rgb(251,251,251);
+    background: linear-gradient(41deg, rgba(251,251,251,1) 28%, rgba(164,210,244,1) 47%, rgba(128,193,241,1) 66%, rgba(75,167,236,1) 84%, rgba(9,136,231,1) 98%);
+}
+
+.card-green{
+    background: rgb(251,251,251);
+    background: linear-gradient(41deg, rgba(251,251,251,1) 32%, rgba(39,204,20,1) 100%);
+}
+
+.card-yellow{
+    background: rgb(251,251,251);
+    background: linear-gradient(41deg, rgba(251,251,251,1) 30%, rgba(253,231,157,1) 57%, rgba(255,211,66,1) 85%, rgba(255,205,38,1) 95%);
+}
+
+.card-red{
+    background: rgb(251,251,251);
+    background: linear-gradient(41deg, rgba(251,251,251,1) 28%, rgba(248,223,218,1) 47%, rgba(244,178,167,1) 66%, rgba(237,104,83,1) 84%, rgba(231,38,9,1) 98%);
+}
+
+.text-bold-800{
+    font-weight: 800;
+}
+
+.text-bold-600{
+    font-weight: 600;
+}
+
+.table-yellow thead th{
+    background-color: #FFDC00;
+    color: rgb(43, 43, 43);
+}
+
+.btn-outline-blue{
+    color: #0d6efd;
+    border-color: #0d6efd;
+}
+.btn-outline-green{
+    color: #0fc21b;
+    border-color: #0fc21b;
+}
+
+.btn-outline-red{
+    color: #f21b1b;
+    border-color: #f21b1b;
+}
+
+.btn-outline-blue:hover{
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+.btn-outline-green:hover{
+    background-color: #0fc21b;
+    color: #fff;
+    border-color: #0fc21b;
+}
+
+.btn-outline-red:hover{
+    background-color: #f21b1b;
+    color: #fff;
+    border-color: #f21b1b;
+}
+
+.bg-blue{
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.bg-green{
+    background-color: #0fc21b;
+    color: #fff;
+}
+
+.bg-red{
+    background-color: #f21b1b;
+    color: #fff;
+}
+
+.bg-grey{
+    background-color: #5e5e5e;
+    color: #fff;
+}
+
+
+/* PROGRESS BAR */
+
+.progress {
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {	
+  height: 18px;
+  background-color: #ee303c;  
+  border-radius: 4px; 
+  transition: 0.4s linear;  
+  transition-property: width, background-color;    
+}
+
+.progress-striped .progress-bar { 	
+  background-color: #FCBC51; 
+  width: 100%; 
+  background-image: linear-gradient(
+        45deg, rgb(252,163,17) 25%, 
+        transparent 25%, transparent 50%, 
+        rgb(252,163,17) 50%, rgb(252,163,17) 75%,
+        transparent 75%, transparent); 
+  animation: progressAnimationStrike 6s;
+}
+
+@keyframes progressAnimationStrike {
+     from { width: 0 }
+     to   { width: 100% }
+}
+ 
+.link{
+    color: #0d6efd;
+}
+
+.progress2 {
+  padding: 1px;
+  border-radius: 30px;
+  background: #D9D9D9 ;
+  box-shadow: inset 0 1px 2px rgba(165, 165, 165, 0.25), 0 1px rgba(201, 201, 201, 0.08);
+}
+
+.progress-bar2 {
+  height: 15px;
+  border-radius: 30px;
+  background-image: 
+    linear-gradient(to bottom, rgba(158, 158, 158, 0.3), rgba(158, 158, 158, 0.05));
+  transition: 0.4s linear;  
+  transition-property: width, background-color;    
+}
+
+.progress-moved .progress-bar2 {
+  width: 50%; 
+  background-color: #1BA0E2;  
+  animation: progressAnimation 6s;
+}
+
+@keyframes progressAnimation {
+  0%   { width: 5%; background-color: #1BA0E2;}
+  50%   { width: 35%; background-color: #1BA0E2;}
+  /* 100% { width: 100%; background-color: #1BA0E2; } */
+}

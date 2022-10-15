@@ -7,7 +7,6 @@
   <div class="col-6" style="background: linear-gradient(#FA6D01, #FF5C38);" >
   <img class="centerImg" src="./assets/images/UI1.png" width="500" height="500git"/>
 
-
   <!-- background-image: url(./assets/images/UI1.png); -->
   </div>
   <div class="col-6" style="background-color:white">

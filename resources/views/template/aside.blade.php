@@ -11,7 +11,7 @@
                     <!-- / Mobile close btn-->
     
                     <!-- User Details-->
-                    <div class="border-bottom pt-3 pb-5 mb-6 d-flex flex-column align-items-center">
+                    <div class="border-bottom pt-3 pb-3 mb-6 d-flex flex-column align-items-center">
                         <div class="position-relative">
                             <picture class="avatar avatar-profile">
                                 <img class="avatar-profile-img" src="{{ asset('/assets/images/profile-small.jpeg')}}">
@@ -49,10 +49,10 @@
                         </div>
                     </div>
                     <!-- User Details-->
-    
+
+                    <ul class="list-unstyled mb-6 aside-menu">
                     @if (Session::get('user')['role']=='admin')
-                        <ul class="list-unstyled mb-6 aside-menu">
-                            <li class="menu-section">Menu ADMIN</li>
+                            {{-- <li class="menu-section">Menu ADMIN</li> --}}
                             <li class="menu-item">
                                 <a class="d-flex align-items-center menu-link" href="{{ route('admin_dashboard')}}"><i class="ri-home-4-line me-3"></i> <span>Dashboard</span></a>
                             </li>
@@ -65,27 +65,20 @@
                             <li class="menu-item">
                                 <a class="d-flex align-items-center menu-link" href="{{ route('admin_list_client')}}"><i class="ri-home-4-line me-3"></i> <span>List Client</span></a>
                             </li>
-                            <li class="menu-section mt-5">
-                                <a class="" href="{{ url('login')}}"><i class="ri-home-4-line me-3"></i> <span>Logout</span></a>
-                            </li>
-                        </ul>
+                        {{-- </ul> --}}
                     @else 
-                    <ul class="list-unstyled mb-6 aside-menu">
-                        <li class="menu-section">Menu CLIENT</li>
-                        {{-- <li class="menu-item">
-                            <a class="d-flex align-items-center menu-link" href="{{ url('/')}}"><i class="ri-home-4-line me-3"></i> <span>Dashboard</span></a>
-                        </li> --}}
+                    {{-- <ul class="list-unstyled mb-6 aside-menu"> --}}
                         <li class="menu-item">
-                            <a class="d-flex align-items-center menu-link" href="{{ route('tambah_pengajuan')}}"><i class="ri-home-4-line me-3"></i> <span>Tambah Pengajuan</span></a>
+                            <a class="d-flex align-items-center menu-link" href="{{ route('tambah_pengajuan')}}"><i class="ri-add-line me-3"></i> <span>Add Procurement</span></a>
                         </li>
                         <li class="menu-item">
-                            <a class="d-flex align-items-center menu-link" href="{{ route('client_list_pengajuan')}}"><i class="ri-home-4-line me-3"></i> <span>List Pengajuan</span></a>
+                            <a class="d-flex align-items-center menu-link" href="{{ route('client_list_pengajuan')}}"><i class="ri-list-ordered me-3"></i> <span>Procurement </span></a>
                         </li>
-                        <li class="menu-section mt-5">
-                            <a class="" href="{{ route('logout')}}"><i class="ri-home-4-line me-3"></i> <span>Logout</span></a>
-                        </li>
-                    </ul>
                     @endif
+                        <div class="menu-section mt-5">
+                            <a class="btn btn-sm" href="{{ route('logout')}}"><span>Logout</span></a>
+                        </div>
+                </ul>
                 </div>
             </div>
         </div>

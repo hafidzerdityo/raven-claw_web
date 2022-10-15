@@ -1,0 +1,30 @@
+[
+    {
+        "username": "hanggoro",
+        "name": "Hanggoro Feriawan",
+        "divisi": "DEVOPS",
+        "role": "client",
+        "password": "devopsvp11"
+    },
+    {
+        "username": "rudinur",
+        "name": "Rudinur",
+        "divisi": "AO",
+        "role": "client",
+        "password": "rudinur123"
+    },
+    {
+        "username": "erry",
+        "name": "Erry Kusumayadhi",
+        "divisi": "ITSG",
+        "role": "client",
+        "password": "erry123"
+    },
+    {
+        "username": "anhar",
+        "name": "Anhar Rosidi",
+        "divisi": "ITAIS",
+        "role": "client",
+        "password": "anhar123"
+    }
+]

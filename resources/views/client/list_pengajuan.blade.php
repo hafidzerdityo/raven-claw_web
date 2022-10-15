@@ -15,65 +15,68 @@
       </nav>      <!-- / Breadcrumbs-->
 
       <!-- Page Title-->
-      <h2 class="fs-4 mb-2">List Pengajuan</h2>
-      <p class=" mb-4">Pengajuan Divisi {{ Session::get('user')['divisi']}}</p>
+      <h2 class="fs-4 mb-3">List Pengajuan {{ Session::get('user')['divisi']}}</h2>
       <!-- / Page Title-->
 
       <div class="row g-4">
         <div class="col-12">
           <!-- Example-->
           <div class="card mb-4">
-            <div class="card-header">
-              <h6 class="card-title">Default example</h6>
-            </div>
-            <div class="card-body">
-                @if (empty($result))
-                    <p>Belum ada Pengajuan. Tambah pengajuan baru di menu pengajuan</p>               
-                @else
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">No Pengajuan</th>
-                            <th scope="col">Aktivitas</th>
-                            <th scope="col">Due Date</th>
-                            <th scope="col">Kategori</th>
-                            <th scope="col">BSU Fix</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+            @if (empty($result))
+                <p>Belum ada Pengajuan. Tambah pengajuan baru di menu pengajuan</p>               
+            @else
+                <table class="table table-striped table-yellow">
+                    <thead>
+                      <tr>
+                        <th scope="col">No Pengajuan</th>
+                        <th scope="col">Aktivitas</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">BSU Fix</th>
+                        <th scope="col">Progress</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($result as $data)
+                        <tr>
+                            <td scope="row">{{ $data['order_id']}}</td>
+                            <td>{{ $data['aktivitas']}}</td>
+                            <td>{{ $data['due']['due_quarter']}}</td>
+                            <td>{{ $data['kategori']}}</td>
+                            <td>{{ ($data['bsu']['bsu_kategori']=='fix')? ('Rp'.number_format($data['bsu']['bsu_fix'])) : "Fluktuatif"}}</td>
+                            <td>
+                              <div class="progress2 progress-moved mr-5">
+                                <div class="progress-bar2 text-center">
+                                </div>                      
+                              </div>
+                            </td>
+                            <td>
+                                @if ($data['status']=='PENDING' OR $data['status']=='request')
+                                    <span class="badge bg-grey">{{ $data['status']}}</span>  
+                                @elseif($data['status']=='on_process')
+                                    <span class="badge bg-blue">{{ $data['status']}}</span>                                
+                                @elseif($data['status']=='completed')                    
+                                    <span class="badge bg-green">{{ $data['status']}}</span>      
+                                @else
+                                    <span class="badge bg-red">{{ $data['status']}}</span>                                
+                                @endif
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <button class=" btn-sm btn btn-outline-blue mx-2" data-bs-toggle="modal" data-bs-target="#modalDetailPengajuan"><i class="ri-eye-fill m-auto"></i></button>
+                                    @include('client.detail_pengajuan')
+                                    <button class="btn-sm btn btn-outline-green" data-bs-toggle="modal" data-bs-target="#modalEditPengajuanClient"><i class="ri-edit-fill"></i></button>
+                                    @include('client.edit_pengajuan')
+                                </div>
+                            </td>
                           </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($result as $data)
-                            <tr>
-                                <th scope="row">{{ $data['order_id']}}</th>
-                                <td>{{ $data['aktivitas']}}</td>
-                                <td>{{ $data['due']['due_quarter']}}</td>
-                                <td>{{ $data['kategori']}}</td>
-                                <td>{{ ($data['bsu']['bsu_kategori']=='fix')? ('Rp'.number_format($data['bsu']['bsu_fix'])) : "Fluktuatif"}}</td>
-                                <td>
-                                    @if ($data['status']=='pending' OR $data['status']=='request')
-                                        <span class="badge bg-secondary">{{ $data['status']}}</span>  
-                                    @elseif($data['status']=='on_process')
-                                        <span class="badge bg-warning">{{ $data['status']}}</span>                                
-                                    @elseif($data['status']=='completed')                    
-                                        <span class="badge bg-success">{{ $data['status']}}</span>      
-                                    @else
-                                        <span class="badge bg-danger">{{ $data['status']}}</span>                                
-                                    @endif
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <button class=" btn-sm btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#modalDetailPengajuan">Detail</button>
-                                        @include('client.detail_pengajuan')
-                                        <button class="btn-sm btn btn-primary">Edit</button>
-                                    </div>
-                                </td>
-                              </tr>
-                            @endforeach
-                        </tbody>
-                      </table>
-                @endif
-            </div>
+                        @endforeach
+                    </tbody>
+                    {{-- {{ $result->links() }} --}}
+                  </table>
+            @endif
           </div>
         </div>
       </div>
@@ -81,32 +84,7 @@
       <!-- Sidebar Menu Overlay-->
       <div class="menu-overlay-bg"></div>
       <!-- / Sidebar Menu Overlay-->
-      
-      <!-- Modal Imports-->
-      <!-- Place your modal imports here-->
-      
-      <!-- Default Example Modal Import-->
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Here goes modal body content
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      <!-- Offcanvas Imports-->
-      <!-- Place your offcanvas imports here-->
-      
+
       <!-- Default Example Offcanvas Import-->
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
@@ -201,6 +179,7 @@
 
     </section>
     <!-- / Content-->
+
 
   </main>
   <!-- /Page Content -->
