@@ -70,6 +70,7 @@ class FormData(BaseModel):
     aktivitas: str
     due: dict
     bsu: dict
+    mitra: str
 
 
 class CheckID(BaseModel):
