@@ -74,6 +74,20 @@ class FormData(BaseModel):
     metode_pengadaan: str
 
 
+class FormDataUpdate(BaseModel):
+    order_id: str
+    username: str
+    name: str
+    divisi: str
+    manajer: Optional[str]
+    kategori: str
+    aktivitas: str
+    due: dict
+    bsu: dict
+    mitra: Optional[str]
+    metode_pengadaan: str
+
+
 class CheckID(BaseModel):
     username: str
 
@@ -120,6 +134,18 @@ def ingest_regist(p_data):
 
 def ingest_pengajuan(p_data):
     client['pos_cp']['client_pengajuan'].insert_one(p_data)
+
+
+def update_data_pengajuan_order(p_orderid, update_json):
+    # get_id_bson = ObjectId('63251d279a1e1373f9cb7052')
+    update_json.pop('order_id')
+    update_query = {
+        # set a new field and new value
+        "$set": update_json,
+    }
+
+    client['pos_cp']['client_pengajuan'].update_one(
+        {"order_id": p_orderid}, update_query)
 
 
 # def penanganan(duit):
@@ -211,11 +237,18 @@ def fcreate_item(item: CheckOrderID):
     return list_view
 
 
+@app.post('/CRUD/client/update_detail')
+def fcreate_item(item: FormDataUpdate):
+    data = json.loads(item.json())
+    list_view = list(update_data_pengajuan_order(data['order_id']), data)
+    return list_view
+
+
 @app.get('/CRUD/admin/lihat-data-pengajuan')
 def fcreate_item():
     return list(client['pos_cp']['client_pengajuan'].find({}, {'_id': 0}))
 
-#######################################
+#####################################################################################################################
 
 
 def find_data_jaskug(p_username):
