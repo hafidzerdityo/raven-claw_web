@@ -240,7 +240,7 @@ def fcreate_item(item: CheckOrderID):
 @app.post('/CRUD/client/update_detail')
 def fcreate_item(item: FormDataUpdate):
     data = json.loads(item.json())
-    list_view = list(update_data_pengajuan_order(data['order_id']), data)
+    list_view = update_data_pengajuan_order(data['order_id'], data)
     return {'status': 'update success'}
 
 
