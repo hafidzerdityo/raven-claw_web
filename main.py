@@ -71,6 +71,7 @@ class FormData(BaseModel):
     due: dict
     bsu: dict
     mitra: Optional[str]
+    metode_pengadaan: str
 
 
 class CheckID(BaseModel):
