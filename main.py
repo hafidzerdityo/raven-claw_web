@@ -241,7 +241,7 @@ def fcreate_item(item: CheckOrderID):
 def fcreate_item(item: FormDataUpdate):
     data = json.loads(item.json())
     list_view = list(update_data_pengajuan_order(data['order_id']), data)
-    return list_view
+    return {'status': 'update success'}
 
 
 @app.get('/CRUD/admin/lihat-data-pengajuan')
