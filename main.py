@@ -179,7 +179,10 @@ def fcreate_item(item: FormData):
         datas.insert(0, ('order_id', idku))
         datas.insert(7, ('status', 'PENDING'))
         out = dict(datas)
-        out['metode_pengadaan'] = penanganan(out['bsu']['bsu_fix'])
+        try:
+            out['metode_pengadaan'] = penanganan(out['bsu']['bsu_fix'])
+        except:
+            out['metode_pengadaan'] = None
         ingest_pengajuan(out)
         return {'status': 'success'}
     else:
