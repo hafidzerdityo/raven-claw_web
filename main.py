@@ -78,6 +78,10 @@ class CheckID(BaseModel):
     username: str
 
 
+class CheckOrderID(BaseModel):
+    order_id: str
+
+
 def encryption(user_pass):
     return hashlib.sha512(user_pass.encode()).hexdigest()
 
@@ -99,6 +103,13 @@ def find_data_pengajuan(p_username):
 def find_data_pengajuan_all(p_username):
     query = {
         'username': p_username
+    }
+    return client['pos_cp']['client_pengajuan'].find(query, {'_id': False, 'username': 0})
+
+
+def find_data_pengajuan_order(p_orderid):
+    query = {
+        'order_id': p_orderid
     }
     return client['pos_cp']['client_pengajuan'].find(query, {'_id': False, 'username': 0})
 
@@ -190,6 +201,13 @@ def fcreate_item(item: FormData):
 def fcreate_item(item: CheckID):
     data = json.loads(item.json())
     list_view = list(find_data_pengajuan_all(data['username']))
+    return list_view
+
+
+@app.post('/CRUD/client/view_detail')
+def fcreate_item(item: CheckOrderID):
+    data = json.loads(item.json())
+    list_view = list(find_data_pengajuan_all(data['order_id']))
     return list_view
 
 
