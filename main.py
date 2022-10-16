@@ -207,7 +207,7 @@ def fcreate_item(item: CheckID):
 @app.post('/CRUD/client/view_detail')
 def fcreate_item(item: CheckOrderID):
     data = json.loads(item.json())
-    list_view = list(find_data_pengajuan_all(data['order_id']))
+    list_view = list(find_data_pengajuan_order(data['order_id']))
     return list_view
 
 
