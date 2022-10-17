@@ -249,7 +249,7 @@ def fcreate_item(item: FormDataUpdate):
 
 
 @app.post('/CRUD/admin/delete-pengajuan')
-def fcreate_item(item: CheckID):
+def fcreate_item(item: CheckOrderID):
     data = json.loads(item.json())
     list_view = delete_pengajuan(data['order_id'])
     return {'status': 'delete success'}
