@@ -248,6 +248,11 @@ def fcreate_item(item: FormDataUpdate):
 def fcreate_item():
     return list(client['pos_cp']['client_pengajuan'].find({}, {'_id': 0}))
 
+
+@app.get('/CRUD/admin/lihat-user')
+def fcreate_item():
+    return list(client['pos_cp']['login_data'].find({}, {'_id': 0}))
+
 #####################################################################################################################
 
 
