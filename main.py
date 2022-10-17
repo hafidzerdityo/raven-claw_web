@@ -268,7 +268,7 @@ def fcreate_item(item: CheckOrderID):
 @app.post('/CRUD/admin/view_detail_client')
 def fcreate_item(item: CheckID):
     data = json.loads(item.json())
-    list_view = find_data_client(data['username'])
+    list_view = list(find_data_client(data['username']))
     return {'status': 'client detail success', 'data': list_view}
 
 
