@@ -216,7 +216,10 @@ def fcreate_item(item: FormData):
             break
     if status:
         t = str(time.time())
-        idku = f"{list_divisi[data['divisi']]}-{t.split('.')[0]}"
+        try:
+            idku = f"{list_divisi[data['divisi']]}-{t.split('.')[0]}"
+        except:
+            idku = f"NONIT-{t.split('.')[0]}"
         datas = list(data.items())
         datas.insert(0, ('order_id', idku))
         datas.insert(7, ('status', 'PENDING'))
