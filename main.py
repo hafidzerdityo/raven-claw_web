@@ -148,6 +148,10 @@ def update_data_pengajuan_order(p_orderid, update_json):
         {"order_id": p_orderid}, update_query)
 
 
+def delete_pengajuan(p_orderid):
+    client['pos_cp']['client_pengajuan'].delete_one(
+        filter={"order_id": p_orderid})
+
 # def penanganan(duit):
 #     if duit >= 0 and duit <= 100000000:
 #         return random.choice(['pembelian_langsung_skema_terbatas', 'pembelian_langsung'])
@@ -242,6 +246,13 @@ def fcreate_item(item: FormDataUpdate):
     data = json.loads(item.json())
     list_view = update_data_pengajuan_order(data['order_id'], data)
     return {'status': 'update success'}
+
+
+@app.post('/CRUD/admin/delete-user')
+def fcreate_item(item: CheckID):
+    data = json.loads(item.json())
+    list_view = delete_pengajuan(data['order_id'])
+    return {'status': 'delete success'}
 
 
 @app.get('/CRUD/admin/lihat-data-pengajuan')
