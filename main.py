@@ -163,6 +163,7 @@ def update_data_pengajuan_order(p_orderid, update_json):
 
 
 def update_data_client(p_username, update_json):
+    update_json.pop('username')
     update_query = {
         # set a new field and new value
         "$set": update_json,
