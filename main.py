@@ -269,7 +269,7 @@ def fcreate_item(item: CheckOrderID):
 def fcreate_item(item: CheckID):
     data = json.loads(item.json())
     list_view = find_data_client(data['username'])
-    return {'status': 'client detail success'}
+    return {'status': 'client detail success', 'data': list_view}
 
 
 @app.get('/CRUD/admin/lihat-data-pengajuan')
