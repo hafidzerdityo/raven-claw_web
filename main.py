@@ -43,6 +43,13 @@ class RegData(BaseModel):
     divisi: str
 
 
+class RegDataUpdate(BaseModel):
+    name: str
+    username: str
+    role: str
+    divisi: str
+
+
 class RegDataJaskug(BaseModel):
     fullName: str
     username: str
@@ -269,7 +276,7 @@ def fcreate_item(item: FormDataUpdate):
 
 
 @app.post('/CRUD/admin/update_detail_client')
-def fcreate_item(item: RegData):
+def fcreate_item(item: RegDataUpdate):
     data = json.loads(item.json())
     list_view = update_data_client(data['username'], data)
     return {'status': 'update success'}
