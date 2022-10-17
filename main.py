@@ -177,6 +177,11 @@ def delete_pengajuan(p_orderid):
     client['pos_cp']['client_pengajuan'].delete_one(
         filter={"order_id": p_orderid})
 
+
+def delete_client(p_username):
+    client['pos_cp']['login_data'].delete_one(
+        filter={"username": p_username})
+
 # def penanganan(duit):
 #     if duit >= 0 and duit <= 100000000:
 #         return random.choice(['pembelian_langsung_skema_terbatas', 'pembelian_langsung'])
@@ -295,6 +300,13 @@ def fcreate_item(item: CheckID):
     data = json.loads(item.json())
     list_view = list(find_data_client(data['username']))
     return {'status': 'client detail success', 'data': list_view}
+
+
+@app.post('/CRUD/admin/delete-client')
+def fcreate_item(item: CheckID):
+    data = json.loads(item.json())
+    list_view = delete_client(data['username'])
+    return {'status': 'delete success'}
 
 
 @app.get('/CRUD/admin/lihat-data-pengajuan')
