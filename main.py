@@ -155,6 +155,16 @@ def update_data_pengajuan_order(p_orderid, update_json):
         {"order_id": p_orderid}, update_query)
 
 
+def update_data_client(p_username, update_json):
+    update_query = {
+        # set a new field and new value
+        "$set": update_json,
+    }
+
+    client['pos_cp']['login_data'].update_one(
+        {"username": p_username}, update_query)
+
+
 def delete_pengajuan(p_orderid):
     client['pos_cp']['client_pengajuan'].delete_one(
         filter={"order_id": p_orderid})
@@ -255,6 +265,13 @@ def fcreate_item(item: CheckOrderID):
 def fcreate_item(item: FormDataUpdate):
     data = json.loads(item.json())
     list_view = update_data_pengajuan_order(data['order_id'], data)
+    return {'status': 'update success'}
+
+
+@app.post('/CRUD/admin/update_detail_client')
+def fcreate_item(item: RegData):
+    data = json.loads(item.json())
+    list_view = update_data_client(data['username'], data)
     return {'status': 'update success'}
 
 
