@@ -76,7 +76,6 @@ class FormData(BaseModel):
 
 class FormDataUpdate(BaseModel):
     order_id: str
-    username: str
     name: str
     divisi: str
     manajer: Optional[str]
@@ -126,6 +125,13 @@ def find_data_pengajuan_order(p_orderid):
         'order_id': p_orderid
     }
     return client['pos_cp']['client_pengajuan'].find(query, {'_id': False, 'username': 0})
+
+
+def find_data_client(p_username):
+    query = {
+        'username': p_username
+    }
+    return client['pos_cp']['login_data'].find(query, {'_id': False})
 
 
 def ingest_regist(p_data):
@@ -256,6 +262,13 @@ def fcreate_item(item: CheckOrderID):
     data = json.loads(item.json())
     list_view = delete_pengajuan(data['order_id'])
     return {'status': 'delete success'}
+
+
+@app.post('/CRUD/admin/view_detail_client')
+def fcreate_item(item: CheckID):
+    data = json.loads(item.json())
+    list_view = find_data_client(data['username'])
+    return {'status': 'client detail success'}
 
 
 @app.get('/CRUD/admin/lihat-data-pengajuan')
