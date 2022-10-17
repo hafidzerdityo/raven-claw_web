@@ -85,6 +85,7 @@ class FormDataUpdate(BaseModel):
     bsu: dict
     mitra: Optional[str]
     metode_pengadaan: str
+    status: str
 
 
 class CheckID(BaseModel):
