@@ -252,7 +252,7 @@ def fcreate_item(item: FormData):
             idku = f"NONIT-{t.split('.')[0]}"
         datas = list(data.items())
         datas.insert(0, ('order_id', idku))
-        datas.insert(7, ('status', 'PENDING'))
+        datas.insert(7, ('status', 'REQUESTED'))
         out = dict(datas)
         ingest_pengajuan(out)
         return {'status': 'success'}
