@@ -314,6 +314,11 @@ def fcreate_item():
     return list(client['pos_cp']['client_pengajuan'].find({}, {'_id': 0}))
 
 
+@app.get('/model/sen-model')
+def fcreate_item():
+    return list(client['social_media']['twitter_old'].find({}))
+
+
 @app.get('/CRUD/admin/lihat-user')
 def fcreate_item():
     return list(client['pos_cp']['login_data'].find({}, {'_id': 0}))
